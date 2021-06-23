@@ -1,0 +1,116 @@
+#pali-quiz {
+  padding: 20px 0;
+  text-align: center;
+  --square-dim: 110px;
+  --margin: 10px;
+  --max-num-per-row: 4;
+}
+
+#pali-quiz button {
+  width: 150px;
+  background-color: var(--dark-accent);
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 30px 0;
+  padding: 8px 0;
+  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  font: 700 1.2em "Barlow Semi Condensed";
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#pali-quiz button:disabled, #pali-quiz button[disabled] {
+  background-color: white;
+  color: black;
+}
+
+#pali-quiz #header h1 {
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+#pali-quiz #header h2 {
+  font-weight: 100;
+  margin-bottom: 0;
+}
+
+#pali-quiz #board-and-scores {
+  min-height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#pali-quiz #board-and-scores #board,
+#pali-quiz #board-and-scores #grid,
+#pali-quiz #board-and-scores .square {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#pali-quiz #board-and-scores #board #grid {
+  max-width: calc( (var(--square-dim) * var(--max-num-per-row)) + (var(--margin) * (var(--max-num-per-row) + 1)));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#pali-quiz #board-and-scores #board #grid .square {
+  width: var(--square-dim);
+  height: var(--square-dim);
+  background-color: var(--dark-accent);
+  color: #fff;
+  font: bold 0.95em "Barlow Semi Condensed";
+  margin: 5px;
+  border-radius: 10px;
+  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  word-break: break-word;
+}
+
+#pali-quiz #board-and-scores #board #grid .matched {
+  background-color: var(--mid-accent);
+  color: black;
+}
+
+#pali-quiz #board-and-scores #board #grid .selected {
+  background-color: lightsalmon;
+}
+
+#pali-quiz #board-and-scores #scores {
+  background-color: white;
+  padding: 5px 30px;
+  border-radius: 10px;
+  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+#pali-quiz #board-and-scores #scores div .label {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+#pali-quiz #board-and-scores #scores div .score-num {
+  color: var(--dark-accent);
+  font-weight: bold;
+}
+/*# sourceMappingURL=pali-quiz.css.map */

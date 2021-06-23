@@ -1,0 +1,47 @@
+#pali-lookup {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+#pali-lookup #eng-words {
+  background-color: var(--dark-accent);
+  color: white;
+}
+
+#pali-lookup #eng-words .selected {
+  background-color: var(--mid-accent);
+  color: black;
+}
+
+#pali-lookup #pali-words {
+  background-color: var(--light-accent);
+}
+
+#pali-lookup #pali-words .selected {
+  background-color: white;
+}
+
+#pali-lookup .words {
+  width: 100%;
+  height: 50vh;
+  overflow: auto;
+}
+
+#pali-lookup .words div {
+  padding: 5px 10px;
+}
+
+#pali-lookup .words .selected {
+  font: bold 1.9em "Barlow Semi Condensed";
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+/*# sourceMappingURL=pali-lookup.css.map */

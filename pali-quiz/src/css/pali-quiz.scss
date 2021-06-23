@@ -1,0 +1,106 @@
+#pali-quiz {
+	padding: 20px 0;
+	text-align: center;
+	// vars:
+	--square-dim: 110px;
+	--margin: 10px;
+	--max-num-per-row: 4;
+
+	button {
+		width: 150px;
+		background-color: var(--dark-accent);
+		color: white;
+		border: 0;
+		border-radius: 10px;
+		box-sizing: border-box;
+		margin: 30px 0;
+		padding: 8px 0;
+		box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+		font: 700 1.2em "Barlow Semi Condensed";
+		text-align: center;
+		text-transform: uppercase;
+
+		&:disabled,
+		&[disabled] {
+			background-color: white;
+			color: black;
+		}
+	}
+
+	#header {
+		h1 {
+			font-family: "Barlow Semi Condensed", sans-serif;
+		}
+
+		h2 {
+			font-weight: 100;
+			margin-bottom: 0;
+		}
+	}
+
+	#board-and-scores {
+		min-height: 200px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		#board,
+		#grid,
+		.square {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#board {
+			#grid {
+				max-width: calc(
+					(var(--square-dim) * var(--max-num-per-row)) +
+						(var(--margin) * (var(--max-num-per-row) + 1))
+				);
+				display: flex;
+				flex-wrap: wrap;
+
+				.square {
+					width: var(--square-dim);
+					height: var(--square-dim);
+					background-color: var(--dark-accent);
+					color: #fff;
+					font: bold 0.95em "Barlow Semi Condensed";
+					margin: 5px;
+					border-radius: 10px;
+					box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+					word-break: break-word;
+				}
+
+				.matched {
+					background-color: var(--mid-accent);
+					color: black;
+				}
+
+				.selected {
+					background-color: lightsalmon;
+				}
+			}
+		}
+
+		#scores {
+			background-color: white;
+			padding: 5px 30px;
+			border-radius: 10px;
+			box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+
+			div {
+				.label {
+					font-family: "Barlow Semi Condensed", sans-serif;
+					font-weight: bold;
+					text-transform: capitalize;
+				}
+				.score-num {
+					color: var(--dark-accent);
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}

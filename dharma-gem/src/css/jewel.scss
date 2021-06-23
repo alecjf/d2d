@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap");
+
+#dharma-gem {
+	--dharma-base-dim: 575px;
+	--tilt: -45deg;
+
+	width: calc(200px + var(--dharma-base-dim));
+	//	background-image: url("https://hosting.photobucket.com/albums/v229/art92122/background_sparkling_stars.gif?width=1920&height=1080&fit=bounds");
+	margin: auto;
+	text-align: center;
+	text-size-adjust: none;
+
+	#dropdowns-container {
+		width: 100%;
+		min-width: var(--dharma-base-dim);
+		position: relative;
+		//		top: 0;
+		//		left: 0;
+		z-index: 2;
+		text-align: center;
+
+		select {
+			width: 250px;
+			margin: 12px;
+
+			&,
+			&#sides-dropdown option {
+				text-transform: capitalize;
+			}
+		}
+	}
+
+	#scene-container {
+		min-height: 1000px;
+		perspective: calc(2 * var(--dharma-base-dim));
+		position: relative;
+		z-index: 1;
+
+		&,
+		* {
+			transform-style: preserve-3d;
+		}
+
+		#scene {
+			width: var(--dharma-base-dim);
+			height: var(--dharma-base-dim);
+			margin: auto;
+			transform: translate3d(0, -700px, -2000px);
+
+			&,
+			.jewel {
+				transition: transform 2.5s ease-in-out;
+			}
+
+			&.clicked {
+				--dharma-tilt: -36deg;
+				--translate-y: 200px;
+
+				transform: translate3d(0, 0, -400px);
+
+				.jewel {
+					&.side1 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 0, 0, 0deg)
+							translate3d(0, calc(-1 * var(--translate-y)), 0);
+					}
+					&.side2 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 1, 0, -90deg)
+							translate3d(0, calc(-1 * var(--translate-y)), 0);
+					}
+					&.side3 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 1, 0, -180deg)
+							translate3d(0, calc(-1 * var(--translate-y)), 0);
+					}
+					&.side4 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 1, 0, -270deg)
+							translate3d(0, calc(-1 * var(--translate-y)), 0);
+					}
+					&.side5 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 0, 0, 0deg) rotate3d(1, 0, 0, 180deg)
+							translate3d(0, var(--translate-y), 0)
+							rotate3d(0, 1, 0, 90deg);
+					}
+					&.side6 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 1, 0, -90deg) rotate3d(1, 0, 0, 180deg)
+							translate3d(0, var(--translate-y), 0)
+							rotate3d(0, 1, 0, 90deg);
+					}
+					&.side7 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 1, 0, -180deg) rotate3d(1, 0, 0, 180deg)
+							translate3d(0, var(--translate-y), 0)
+							rotate3d(0, 1, 0, 90deg);
+					}
+					&.side8 {
+						transform: rotate3d(1, 0, 0, var(--dharma-tilt))
+							rotate3d(0, 1, 0, -270deg) rotate3d(1, 0, 0, 180deg)
+							translate3d(0, var(--translate-y), 0)
+							rotate3d(0, 1, 0, 90deg);
+					}
+
+					.pyramid {
+						.face {
+							font-family: "Archivo Narrow", sans-serif;
+							font-size: 1.2em;
+
+							.spacer {
+								height: 12px;
+							}
+
+							.spacer:first-child,
+							.spacer + .definition + .spacer {
+								height: 0;
+							}
+
+							.more-info,
+							.linked {
+								color: navy;
+								font-weight: bold;
+
+								&:hover {
+									color: white;
+								}
+							}
+
+							div.pali-word {
+								margin-top: 80px;
+								padding-bottom: 8px;
+								margin-bottom: 8px;
+								border-bottom: 1px solid black;
+
+								span {
+									font-size: 1.6em;
+								}
+							}
+
+							div.sutta {
+								border-bottom: 1px solid black;
+								padding-bottom: 12px;
+								font-size: 0.9em;
+
+								&:not(:first-child) {
+									padding-top: 12px;
+								}
+
+								&:last-child {
+									margin-bottom: 12px;
+								}
+							}
+
+							.ordered-item {
+								max-width: 375px;
+								margin: auto;
+							}
+
+							.side-triangle {
+								width: calc(var(--dharma-base-dim) / 2);
+								height: var(--dharma-base-dim);
+
+								&.left {
+									float: left;
+									shape-outside: polygon(0 100%, 100% 0, 0 0);
+									clip-path: polygon(0 100%, 100% 0, 0 0);
+								}
+
+								&.right {
+									float: right;
+									shape-outside: polygon(
+										100% 100%,
+										100% 0,
+										0 0
+									);
+									clip-path: polygon(100% 100%, 100% 0, 0 0);
+								}
+							}
+
+							&:nth-child(1) {
+								transform: rotate3d(0, 0, 0, 0deg)
+									translate3d(
+										0,
+										0,
+										calc((var(--dharma-base-dim) / 2))
+									)
+									rotate3d(1, 0, 0, 30deg);
+							}
+							&:nth-child(2) {
+								transform: rotate3d(0, 1, 0, 90deg)
+									translate3d(
+										0,
+										0,
+										calc((var(--dharma-base-dim) / 2))
+									)
+									rotate3d(1, 0, 0, 30deg);
+							}
+							&:nth-child(3) {
+								transform: rotate3d(0, 1, 0, 180deg)
+									translate3d(
+										0,
+										0,
+										calc((var(--dharma-base-dim) / 2))
+									)
+									rotate3d(1, 0, 0, 30deg);
+							}
+							&:nth-child(4) {
+								transform: rotate3d(0, 1, 0, 270deg)
+									translate3d(
+										0,
+										0,
+										calc((var(--dharma-base-dim) / 2))
+									)
+									rotate3d(1, 0, 0, 30deg);
+							}
+						}
+					}
+				}
+			}
+
+			.jewel {
+				width: 100%;
+				height: 100%;
+				transform: rotateX(var(--tilt));
+				transform-origin: bottom;
+
+				.pyramid {
+					width: 100%;
+					height: 100%;
+					position: relative;
+					transform-origin: bottom;
+
+					&.bottom {
+						transform: rotateX(180deg) rotateY(90deg)
+							translate3d(
+								0,
+								calc(var(--dharma-base-dim) + 1px),
+								0
+							);
+					}
+
+					.face {
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+						transform-origin: bottom;
+
+						&:nth-child(odd) {
+							background: #add8e6;
+						}
+
+						&:nth-child(even) {
+							background: #8dc3d4;
+						}
+
+						&:nth-child(1) {
+							transform: rotateY(0deg)
+								translate3d(
+									0,
+									0,
+									calc((var(--dharma-base-dim) / 2))
+								)
+								rotateX(30deg);
+						}
+						&:nth-child(2) {
+							transform: rotateY(90deg)
+								translate3d(
+									0,
+									0,
+									calc((var(--dharma-base-dim) / 2))
+								)
+								rotateX(30deg);
+						}
+						&:nth-child(3) {
+							transform: rotateY(180deg)
+								translate3d(
+									0,
+									0,
+									calc((var(--dharma-base-dim) / 2))
+								)
+								rotateX(30deg);
+						}
+						&:nth-child(4) {
+							transform: rotateY(270deg)
+								translate3d(
+									0,
+									0,
+									calc((var(--dharma-base-dim) / 2))
+								)
+								rotateX(30deg);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.list-box {
+		--width: 600px;
+
+		transition: opacity 1.25s, transform 0s !important;
+		position: absolute;
+		top: 50px;
+
+		.close-info {
+			position: absolute;
+			top: 3%;
+			left: calc(100% - 30px);
+			font-weight: bold;
+			color: bisque;
+			z-index: 10;
+			transition: 0s !important;
+
+			&:hover {
+				color: red;
+				cursor: pointer;
+			}
+		}
+
+		&.hidden {
+			opacity: 0;
+
+			&:hover {
+				cursor: default;
+			}
+		}
+
+		&.shown {
+			opacity: 1;
+		}
+
+		table {
+			width: 100%;
+
+			td {
+				width: 50%;
+				border: 1px solid black;
+
+				&.info-def {
+					background-color: antiquewhite;
+				}
+			}
+		}
+	}
+}

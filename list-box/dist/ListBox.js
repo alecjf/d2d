@@ -26,7 +26,7 @@ const ListBox = ({
       if (list === title) {
         setTimeout(() => {
           dom.style.zIndex = 3;
-          dom.style.transform = "translateZ(25px)";
+          dom.style.transform = "translateZ(100px)";
           dom.className = "list-box shown";
         }, hasPrevRef ? fadeTime - fadeOverlap : 0);
       } else if (prevlistRef.current === title) {

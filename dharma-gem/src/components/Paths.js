@@ -38,7 +38,7 @@ const Paths = ({ setPath }) => {
 		<div id="paths">
 			<div id="header">
 				The Noble Eightfold Path as summarized in the{" "}
-				<a href="">… Sutta</a>
+				<a href="">Saccavibhanga Sutta (Majjhima Nikaya 141)</a>
 			</div>
 			<div id="path-groups">
 				{Object.keys(obj).map((key) => (

@@ -2,6 +2,7 @@
 #dharma-gem {
   --dharma-base-dim: 575px;
   --tilt: -45deg;
+  --cool-purple: rgb(113, 68, 184);
   width: calc(200px + var(--dharma-base-dim));
   margin: auto;
   text-align: center;
@@ -108,27 +109,80 @@
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face {
   font-family: "Archivo Narrow", sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .right-header {
+  color: #000046;
+  font-weight: bold;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table {
+  display: inline-block;
+  margin: auto;
+  border: 1px solid black;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table td,
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table th {
+  background-color: var(--light-accent);
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table tbody tr:first-child td:nth-child(2) {
+  background-color: lightcoral;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table tbody tr:first-child td:nth-child(3) {
+  background-color: red;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table tbody tr:nth-child(2) td:nth-child(2) {
+  background-color: lightgreen;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table tbody tr:nth-child(2) td:nth-child(3) {
+  background-color: #00aa00;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table,
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table td,
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table th {
+  border: 1px solid black;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face #right-effort-table td {
+  width: 100px;
+  height: 50px;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .spacer {
   height: 12px;
 }
 
-#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .spacer:first-child,
-#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .spacer + .definition + .spacer {
-  height: 0;
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .list .stylized {
+  font-weight: bold;
+  color: var(--cool-purple);
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .list .bullet {
+  font-size: 2em;
+  line-height: 0;
+  top: 6.5px;
+  position: relative;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .more-info,
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .linked {
-  color: navy;
+  color: #004d80;
   font-weight: bold;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .more-info:hover,
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .linked:hover {
-  color: white;
+  color: var(--dark-accent);
+  cursor: pointer;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face div.pali-word {
@@ -144,12 +198,22 @@
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face div.sutta {
   border-bottom: 1px solid black;
-  padding-bottom: 12px;
-  font-size: 0.9em;
+  padding-bottom: 8px;
+  line-height: 1.1em;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face div.sutta a {
+  color: var(--cool-purple);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#dharma-gem #scene-container #scene.clicked .jewel .pyramid .face div.sutta a:hover {
+  color: var(--dark-accent);
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face div.sutta:not(:first-child) {
-  padding-top: 12px;
+  padding-top: 8px;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face div.sutta:last-child {
@@ -282,7 +346,7 @@
 }
 
 #dharma-gem .list-box .close-info:hover {
-  color: red;
+  color: maroon;
   cursor: pointer;
 }
 

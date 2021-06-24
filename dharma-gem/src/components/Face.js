@@ -1,4 +1,5 @@
 import dharmaLists, { paliWords } from "d2d-all-info";
+import { capitalize } from "d2d-listbox-main";
 
 const Face = ({ pali, parts, suttas, setList, setPath }) => {
 	const Header = () => (
@@ -22,13 +23,11 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 		const Sutta = (props) => {
 			return (
 				<div className="sutta">
-					<i>
-						<a
-							href={props.sutta.link}
-							target="_blank"
-							rel="noreferrer"
-						>{`${props.sutta.title} (${props.sutta.section} ${props.sutta.verse})`}</a>
-					</i>
+					<a href={props.sutta.link} target="_blank" rel="noreferrer">
+						{props.sutta.title}
+						<br />
+						{`(${props.sutta.section} ${props.sutta.verse})`}
+					</a>
 				</div>
 			);
 		};
@@ -57,7 +56,7 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 	};
 
 	const Parts = () => {
-		const List = ({ items, isOrdered, concatenate }) => {
+		const List = ({ items, isOrdered, concatenate, makeInline }) => {
 			const ListItems = ({ ordered }) =>
 				items.map((item, i) => (
 					<>
@@ -66,14 +65,20 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 						></div>
 						{ordered ? (
 							<div className="ordered-item">
-								{`${i + 1}.`} {item}
+								<span className="stylized">{`${i + 1}.`}</span>{" "}
+								{item}
 							</div>
 						) : (
-							<>* {item}</>
+							<>
+								<span className="stylized bullet">‣</span>{" "}
+								{item}
+							</>
 						)}
 					</>
 				));
-			return (
+			return makeInline ? (
+				items.join(", ") + ", "
+			) : (
 				<span
 					className={`list${
 						items.length === 1 || concatenate ? ` wide` : ` narrow`
@@ -128,14 +133,15 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 						);
 					obj.definition &&
 						holder.push(
-							<div className="spacer"></div>,
+							obj.definition !== "desire or greed" && (
+								<div className="spacer"></div>
+							),
 							<span className="definition" key={obj.definition}>
 								<b>
 									{obj.definition}
 									{obj.pali && (
 										<>
-											{" "}
-											({paliWords[obj.pali]}:{" "}
+											<br />({paliWords[obj.pali]}:{" "}
 											<i>{obj.pali}</i>)
 										</>
 									)}
@@ -163,10 +169,15 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 				strings.length > 0 &&
 					result.push(
 						<List
-							items={strings}
-							isOrdered={isOrdered}
-							concatenate={concatenate}
-							key={strings[0]}
+							{...{
+								key: strings[0],
+								items: strings,
+								makeInline:
+									// for the first list under Right Understanding:
+									pali[0] === "ditthi" && obj.length > 3,
+								isOrdered,
+								concatenate,
+							}}
 						/>
 					);
 				objs.forEach((o) =>
@@ -187,9 +198,40 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 				/* <Header /> */
 				document.getElementById("scene")?.className === "clicked" && (
 					<>
-						<PaliWord pali={pali} />
+						<PaliWord {...{ pali }} />
 						<Suttas />
+						<span className="right-header">
+							Right {capitalize(paliWords[pali])} includes:
+						</span>
+						{paliWords[pali] === "mindfulness" ? (
+							<div className="spacer"></div>
+						) : (
+							<br />
+						)}
 						<Parts />
+						{paliWords[pali] === "effort" && (
+							<table id="right-effort-table">
+								<thead>
+									<tr>
+										<th></th>
+										<th>unarisen</th>
+										<th>arisen</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>unwholesome states of mind</td>
+										<td>prevent</td>
+										<td>abandon</td>
+									</tr>
+									<tr>
+										<td>wholesome states of mind</td>
+										<td>arouse</td>
+										<td>maintain</td>
+									</tr>
+								</tbody>
+							</table>
+						)}
 					</>
 				)
 			}

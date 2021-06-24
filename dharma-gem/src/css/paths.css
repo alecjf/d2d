@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap");
 #paths {
-  margin: auto;
+  margin: 15px auto 0;
   position: relative;
   z-index: 1000000;
 }
@@ -13,13 +14,34 @@
       -ms-flex-align: center;
           align-items: center;
   font-size: 14px;
+  font-family: "Archivo Narrow";
+}
+
+#paths * {
+  text-transform: uppercase;
+}
+
+#paths #header {
+  max-width: 600px;
+  margin-bottom: 15px;
 }
 
 #paths #header,
 #paths #header a {
-  max-width: 100vw;
   display: inline-block;
   font-size: 18px;
+  text-transform: inherit;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#paths #header a {
+  color: var(--cool-purple);
+  text-decoration: none;
+}
+
+#paths #header a:hover {
+  color: var(--dark-accent);
 }
 
 #paths,
@@ -45,16 +67,38 @@
       -ms-flex: 1;
           flex: 1;
   max-width: 200px;
-  border: 1px solid black;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: var(--cool-purple);
+  color: white;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+#paths #path-groups .path-group div {
+  text-transform: uppercase;
+}
+
+#paths #path-groups .path-group div:nth-child(2) {
+  margin-bottom: 2px;
 }
 
 #paths #path-groups .path-group button {
   width: 100%;
-  padding: 0;
+  padding: 1.5px;
   word-break: break-all;
   display: inline-block;
   text-align: center;
+  background: var(--mid-accent);
+  font-weight: bold;
+  border: 2px solid var(--dark-accent);
+  margin: 3px;
+}
+
+#paths #path-groups .path-group button:hover {
+  background-color: white;
+  cursor: pointer;
 }
 /*# sourceMappingURL=paths.css.map */

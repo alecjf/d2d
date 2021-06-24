@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/jewel.css";
 import dharmaLists, { justPaths } from "d2d-all-info";
 import Paths from "./Paths";

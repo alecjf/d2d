@@ -26,7 +26,7 @@
 			display: inline-block;
 			font-size: 18px;
 			text-transform: inherit;
-			font-size: 1.3rem;
+			font-size: 1.2rem;
 			font-weight: bold;
 		}
 
@@ -54,18 +54,20 @@
 			flex: 1;
 			max-width: 200px;
 			box-sizing: border-box;
-			margin: 5px;
 			border-radius: 10px;
 			background-color: var(--cool-purple);
 			color: white;
 			font-weight: bold;
 			padding: 5px 0;
 
-			div {
-				text-transform: uppercase;
+			&:nth-child(2) {
+				margin: 0 7px;
+			}
 
+			div {
 				&:nth-child(2) {
 					margin-bottom: 2px;
+                    text-transform: lowercase;
 				}
 			}
 
@@ -79,6 +81,7 @@
 				font-weight: bold;
 				border: 2px solid var(--dark-accent);
 				margin: 3px;
+                font-size: 0.95em;
 
 				&:hover {
 					background-color: white;

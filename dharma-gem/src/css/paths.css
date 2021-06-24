@@ -31,7 +31,7 @@
   display: inline-block;
   font-size: 18px;
   text-transform: inherit;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -69,7 +69,6 @@
   max-width: 200px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 5px;
   border-radius: 10px;
   background-color: var(--cool-purple);
   color: white;
@@ -77,12 +76,13 @@
   padding: 5px 0;
 }
 
-#paths #path-groups .path-group div {
-  text-transform: uppercase;
+#paths #path-groups .path-group:nth-child(2) {
+  margin: 0 7px;
 }
 
 #paths #path-groups .path-group div:nth-child(2) {
   margin-bottom: 2px;
+  text-transform: lowercase;
 }
 
 #paths #path-groups .path-group button {
@@ -95,6 +95,7 @@
   font-weight: bold;
   border: 2px solid var(--dark-accent);
   margin: 3px;
+  font-size: 0.95em;
 }
 
 #paths #path-groups .path-group button:hover {

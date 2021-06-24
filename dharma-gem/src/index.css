@@ -1,5 +1,10 @@
 @import url("https://fern.haus/master.css");
 
+html,
+body {
+	text-size-adjust: none;
+}
+
 body {
 	margin: 0;
 	overflow-x: hidden;

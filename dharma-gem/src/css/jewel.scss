@@ -120,7 +120,7 @@
 								margin: auto;
 								border: 1px solid black;
 								font-weight: bold;
-                                margin-top: 25px;
+								margin-top: 25px;
 
 								td,
 								th {
@@ -129,6 +129,12 @@
 
 								tbody {
 									tr {
+										td {
+											&:first-child {
+												line-height: 1em;
+											}
+										}
+
 										&:first-child {
 											td {
 												&:nth-child(2) {
@@ -165,6 +171,7 @@
 								td {
 									width: 100px;
 									height: 50px;
+									overflow: hidden;
 								}
 							}
 
@@ -326,6 +333,10 @@
 						position: absolute;
 						clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 						transform-origin: bottom;
+
+                        &, * {
+                            line-height: 1.45rem;
+                        }
 
 						&:nth-child(odd) {
 							background: #add8e6;

@@ -1,14 +1,8 @@
+import React from "react";
 import dharmaLists, { paliWords } from "d2d-all-info";
 import { capitalize } from "d2d-listbox-main";
 
 const Face = ({ pali, parts, suttas, setList, setPath }) => {
-	const Header = () => (
-		<span className="header">
-			<span>RIGHT</span> {paliWords[pali]}
-			<br />
-		</span>
-	);
-
 	const PaliWord = ({ pali }) => (
 		<div className="pali-word">
 			<b>
@@ -59,7 +53,7 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 		const List = ({ items, isOrdered, concatenate, makeInline }) => {
 			const ListItems = ({ ordered }) =>
 				items.map((item, i) => (
-					<>
+					<React.Fragment key={`${pali}-${item}-${i}`}>
 						<div
 							className={`spacer${isOrdered ? " ordered" : ""}`}
 						></div>
@@ -69,19 +63,19 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 								{item}
 							</div>
 						) : (
-							<>
+							<div className="unordered-item">
 								<span className="stylized bullet">‣</span>{" "}
 								{item}
-							</>
+							</div>
 						)}
-					</>
+					</React.Fragment>
 				));
 			return makeInline ? (
 				items.join(", ") + ", "
 			) : (
 				<span
-					className={`list${
-						items.length === 1 || concatenate ? ` wide` : ` narrow`
+					className={`list ${
+						items.length === 1 || concatenate ? `wide` : `narrow`
 					}`}
 				>
 					{items.length === 1 ? (
@@ -194,22 +188,22 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 		<div className="face">
 			<div className="side-triangle left"></div>
 			<div className="side-triangle right"></div>
-			{
-				/* <Header /> */
-				document.getElementById("scene")?.className === "clicked" && (
-					<>
-						<PaliWord {...{ pali }} />
-						<Suttas />
-						<span className="right-header">
-							Right {capitalize(paliWords[pali])} includes:
-						</span>
-						{paliWords[pali] === "mindfulness" ? (
+			{document.getElementById("scene")?.className === "clicked" && (
+				<>
+					<PaliWord {...{ pali }} />
+					<Suttas />
+					<span className="right-header">
+						Right {capitalize(paliWords[pali])} includes:
+					</span>
+					{paliWords[pali] === "mindfulness" ? (
+						<div className="spacer"></div>
+					) : (
+						<br />
+					)}
+					<Parts />
+					{paliWords[pali] === "effort" && (
+						<>
 							<div className="spacer"></div>
-						) : (
-							<br />
-						)}
-						<Parts />
-						{paliWords[pali] === "effort" && (
 							<table id="right-effort-table">
 								<thead>
 									<tr>
@@ -231,10 +225,10 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 									</tr>
 								</tbody>
 							</table>
-						)}
-					</>
-				)
-			}
+						</>
+					)}
+				</>
+			)}
 		</div>
 	);
 };

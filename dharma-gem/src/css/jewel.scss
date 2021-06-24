@@ -2,7 +2,7 @@
 
 #dharma-gem {
 	--dharma-base-dim: 575px;
-	--tilt: -45deg;
+	--tilt: -30deg;
 	--cool-purple: rgb(113, 68, 184);
 
 	width: calc(200px + var(--dharma-base-dim));
@@ -33,7 +33,7 @@
 
 	#scene-container {
 		min-height: 1000px;
-		perspective: calc(2 * var(--dharma-base-dim));
+		perspective: calc(10 * var(--dharma-base-dim));
 		position: relative;
 		z-index: 1;
 
@@ -46,7 +46,7 @@
 			width: var(--dharma-base-dim);
 			height: var(--dharma-base-dim);
 			margin: auto;
-			transform: translate3d(0, -700px, -2000px);
+			transform: translate3d(0, -280px, -2000px);
 
 			&,
 			.jewel {
@@ -54,8 +54,8 @@
 			}
 
 			&.clicked {
-				--dharma-tilt: -36deg;
-				--translate-y: 200px;
+				--dharma-tilt: -40deg;
+				--translate-y: 230px;
 
 				transform: translate3d(0, 0, -400px);
 
@@ -116,9 +116,9 @@
 							}
 
 							#right-effort-table {
-								display: inline-block;
+								display: inline;
 								margin: auto;
-								border: 1px solid black;
+								// border: 1px solid black;
 								font-weight: bold;
 								margin-top: 25px;
 
@@ -162,7 +162,6 @@
 									}
 								}
 
-								&,
 								td,
 								th {
 									border: 1px solid black;
@@ -334,9 +333,10 @@
 						clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 						transform-origin: bottom;
 
-                        &, * {
-                            line-height: 1.45rem;
-                        }
+						&,
+						* {
+							line-height: 1.45rem;
+						}
 
 						&:nth-child(odd) {
 							background: #add8e6;

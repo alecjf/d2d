@@ -31,7 +31,7 @@ const ListBox = ({ title, list, setList }) => {
 				setTimeout(() => {
 					dom.style.zIndex = -3;
 					// same measurement as #scene.clicked
-					dom.style.transform = "translateZ(-400px)";
+					dom.style.transform = "translateZ(-1000px)";
 				}, fadeTime);
 			}
 			prevlistRef.current = list;
@@ -169,7 +169,7 @@ const ListBox = ({ title, list, setList }) => {
 			id={`${title}${!list ? " lookup" : ""}`}
 			style={{
 				zIndex: -3,
-				transform: "translateZ(-400px)",
+				transform: "translateZ(-1000px)",
 				// eslint-disable-next-line no-restricted-globals
 				maxWidth: (screen.width < 600 ? screen.width : 600) - 25,
 				left: `calc(50% - ${

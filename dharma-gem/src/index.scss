@@ -1,0 +1,40 @@
+@import url("https://fern.haus/master.css");
+
+html,
+body {
+	text-size-adjust: none;
+}
+
+body {
+	// background-image: url("https://hosting.photobucket.com/albums/v229/art92122/background_sparkling_stars.gif?width=1920&height=1080&fit=bounds");
+	// background-repeat: repeat;
+	margin: 0;
+	overflow-x: hidden;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#navigation {
+	background-color: var(--mid-accent) !important;
+	border-right: 2px solid #004d80;
+	box-sizing: border-box;
+
+	&,
+	a {
+		color: #004d80 !important;
+	}
+}
+
+#hamburger {
+	div {
+		background-color: #004d80 !important;
+	}
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}

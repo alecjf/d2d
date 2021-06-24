@@ -5,11 +5,9 @@ import { capitalize } from "d2d-listbox-main";
 const Face = ({ pali, parts, suttas, setList, setPath }) => {
 	const PaliWord = ({ pali }) => (
 		<div className="pali-word">
-			<b>
-				<span>{`${pali}`}</span>
-				<br />
-				<i>({paliWords[pali]})</i>
-			</b>
+			<div>
+				<span>{`${pali}`}</span> ({paliWords[pali]})
+			</div>
 		</div>
 	);
 

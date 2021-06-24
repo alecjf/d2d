@@ -13,30 +13,13 @@ const Jewel = () => {
 
 	useEffect(() => {}, []);
 
-	function listsDropdown() {
-		let result = Object.keys(dharmaLists).map((key) => (
-			<option value={key} key={key}>
-				{key}
-			</option>
-		));
-		return (
-			<select onChange={(e) => setList(e.target.value)} value={list}>
-				<option value="TITLE" disabled>
-					BUDDHIST LISTS
-				</option>
-				{result}
-			</select>
-		);
-	}
-
 	const getPathText = (index) => (
 		<Face {...justPaths[index - 1]} setList={setList} setPath={setPath} />
 	);
 
 	return (
 		<>
-			<Paths {...{ setPath }} />
-			<div id="dropdowns-container">{listsDropdown()}</div>
+			<Paths {...{ setPath, list, setList }} />
 			<div id="scene-container">
 				<div id="scene">
 					<div id="jewel" className={`jewel side${path}`}>

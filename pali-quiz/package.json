@@ -1,6 +1,6 @@
 {
 	"name": "pali-quiz",
-	"homepage": "https://fern.haus/d2d/pali-quiz",
+	"homepage": "https://fern.haus/projects/d2d/pali-quiz",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {

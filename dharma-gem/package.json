@@ -1,6 +1,6 @@
 {
 	"name": "dharma-gem",
-	"homepage": "https://fern.haus/d2d/dharma-gem",
+	"homepage": "https://fern.haus/projects/d2d/dharma-gem",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {

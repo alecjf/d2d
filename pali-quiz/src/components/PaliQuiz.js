@@ -2,7 +2,6 @@ import "../css/pali-quiz.css";
 import { useEffect, useState } from "react";
 import { paliWords, getRandomPaliWords, shuffle } from "d2d-all-info";
 import { Transition } from "react-transition-group";
-import Navigation from "d2d-navigation";
 
 const PaliQuiz = (props) => {
 	const [data, setData] = useState({}),
@@ -220,32 +219,29 @@ const PaliQuiz = (props) => {
 	}
 
 	return (
-		<>
-			<Navigation />
-			<div id="pali-quiz">
-				<div id="header">
-					<h1>Pali Quiz</h1>
-					<h2>
-						A timed quiz where you match Pali words with their
-						English counterparts.
-					</h2>
-					<button
-						onClick={() => newQuizHandler()}
-						disabled={!dataIsEmpty()}
-					>
-						{newQuizToggle
-							? "LOADING"
-							: dataIsEmpty()
-							? "Take Quiz"
-							: `Time: ${timerTime}`}
-					</button>
-				</div>
-				<div id="board-and-scores">
-					{displayBoard()}
-					{displayScores()}
-				</div>
+		<div id="pali-quiz">
+			<div id="header">
+				<h1>Pali Quiz</h1>
+				<h2>
+					A timed quiz where you match Pali words with their English
+					counterparts.
+				</h2>
+				<button
+					onClick={() => newQuizHandler()}
+					disabled={!dataIsEmpty()}
+				>
+					{newQuizToggle
+						? "LOADING"
+						: dataIsEmpty()
+						? "Take Quiz"
+						: `Time: ${timerTime}`}
+				</button>
 			</div>
-		</>
+			<div id="board-and-scores">
+				{displayBoard()}
+				{displayScores()}
+			</div>
+		</div>
 	);
 };
 

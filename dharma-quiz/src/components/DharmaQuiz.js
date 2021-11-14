@@ -2,7 +2,6 @@ import "../css/dharma-quiz.css";
 import { useState, useEffect } from "react";
 import { Transition } from "react-transition-group";
 import { getRandomDharmaQuiz, shuffle } from "d2d-all-info";
-import Navigation from "d2d-navigation";
 
 const DharmaQuiz = (props) => {
 	function shuffleItems(data) {
@@ -231,46 +230,43 @@ const DharmaQuiz = (props) => {
 				exited: { opacity: 1 },
 			};
 		return (
-			<>
-				<Navigation />
-				<Transition
-					in={newQuiz}
-					onEnter={() => {
-						setShowCorrectStatus(false);
-						setShowIncorrectStatus(false);
-					}}
-					onEntered={() => setNewQuiz(false)}
-					onExit={() => {
-						const data = getRandomDharmaQuiz(props.size);
-						setData(data);
-						setShuffledItems(shuffleItems(data));
-						setBoard(makeStartingBoard(data));
-						setSelectedItems({});
-						document.getElementById("dq")?.scrollTo(0, 0);
-					}}
-					timeout={duration}
-				>
-					{(state) => (
-						<div
-							id="dharma-quiz"
-							style={{
-								...defaultStyle,
-								...transitionStyles[state],
-							}}
-						>
-							<div id="header">
-								Sort the terms by the following categories:
-								<br />
-								<h2>{getCategoryNamesForQuizHeader()}</h2>
-								Select one or more terms and then a category
-								header below.
-							</div>
-							{makeItemBoxes()}
-							{makeCategoryBoxes()}
+			<Transition
+				in={newQuiz}
+				onEnter={() => {
+					setShowCorrectStatus(false);
+					setShowIncorrectStatus(false);
+				}}
+				onEntered={() => setNewQuiz(false)}
+				onExit={() => {
+					const data = getRandomDharmaQuiz(props.size);
+					setData(data);
+					setShuffledItems(shuffleItems(data));
+					setBoard(makeStartingBoard(data));
+					setSelectedItems({});
+					document.getElementById("dq")?.scrollTo(0, 0);
+				}}
+				timeout={duration}
+			>
+				{(state) => (
+					<div
+						id="dharma-quiz"
+						style={{
+							...defaultStyle,
+							...transitionStyles[state],
+						}}
+					>
+						<div id="header">
+							Sort the terms by the following categories:
+							<br />
+							<h2>{getCategoryNamesForQuizHeader()}</h2>
+							Select one or more terms and then a category header
+							below.
 						</div>
-					)}
-				</Transition>
-			</>
+						{makeItemBoxes()}
+						{makeCategoryBoxes()}
+					</div>
+				)}
+			</Transition>
 		);
 	}
 

@@ -1,7 +1,6 @@
 import "../css/pali-lookup.css";
 import { useEffect, useState } from "react";
 import { paliWords } from "d2d-all-info";
-import Navigation from "d2d-navigation";
 
 const PaliLookup = (props) => {
 	const sortedPali = Object.keys(paliWords).sort(),
@@ -63,13 +62,10 @@ const PaliLookup = (props) => {
 			makeWords("eng-words", getPaliWordFromEng, sortedEng);
 
 	return (
-		<>
-			<Navigation />
-			<div id="pali-lookup">
-				{makePaliWords()}
-				{makeEngWords()}
-			</div>
-		</>
+		<div id="pali-lookup">
+			{makePaliWords()}
+			{makeEngWords()}
+		</div>
 	);
 };
 

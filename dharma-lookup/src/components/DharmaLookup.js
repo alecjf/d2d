@@ -2,7 +2,6 @@ import "../css/dharma-lookup.css";
 import { useState, useEffect } from "react";
 import dharmaLists from "d2d-all-info";
 import ListBox, { capitalize } from "d2d-listbox-main";
-import Navigation from "d2d-navigation";
 
 const DharmaLookup = (props) => {
 	const [fromTop, setFromTop] = useState(0);
@@ -34,30 +33,27 @@ const DharmaLookup = (props) => {
 	}
 
 	return (
-		<>
-			<Navigation />
-			<div id="dharma-lookup">
-				<div
-					id="back-to-top"
-					style={{ top: fromTop }}
-					onClick={(event) => backToTopHandler(event)}
-				>
-					▲
-				</div>
-				<h1>Dharma Lookup</h1>
-				<h2>Study Buddhist lists and concepts.</h2>
-				<select onChange={(event) => scrollSectionHandler(event)}>
-					{Object.keys(dharmaLists).map((option) => (
-						<option value={option} key={`lookup-option-${option}`}>
-							{capitalize(option)}
-						</option>
-					))}
-				</select>
-				{Object.keys(dharmaLists).map((key) => (
-					<ListBox title={key} key={`lookup-list-box-${key}`} />
-				))}
+		<div id="dharma-lookup">
+			<div
+				id="back-to-top"
+				style={{ top: fromTop }}
+				onClick={(event) => backToTopHandler(event)}
+			>
+				▲
 			</div>
-		</>
+			<h1>Dharma Lookup</h1>
+			<h2>Study Buddhist lists and concepts.</h2>
+			<select onChange={(event) => scrollSectionHandler(event)}>
+				{Object.keys(dharmaLists).map((option) => (
+					<option value={option} key={`lookup-option-${option}`}>
+						{capitalize(option)}
+					</option>
+				))}
+			</select>
+			{Object.keys(dharmaLists).map((key) => (
+				<ListBox title={key} key={`lookup-list-box-${key}`} />
+			))}
+		</div>
 	);
 };
 

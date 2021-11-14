@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Jewel from "./Jewel";
-import Navigation from "d2d-navigation";
 
 const DharmaGem = () => {
 	useEffect(() => {
@@ -9,12 +8,9 @@ const DharmaGem = () => {
 	}, []);
 
 	return (
-		<>
-			<Navigation />
-			<div id="dharma-gem">
-				<Jewel />
-			</div>
-		</>
+		<div id="dharma-gem">
+			<Jewel />
+		</div>
 	);
 };
 

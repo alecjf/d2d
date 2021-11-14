@@ -1,6 +1,6 @@
 {
 	"name": "pali-lookup",
-	"homepage": "https://fern.haus/d2d/pali-lookup",
+	"homepage": "https://fern.haus/projects/d2d/pali-lookup",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {

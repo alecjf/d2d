@@ -99,6 +99,11 @@ footer #d2d-header p {
           flex-direction: column;
 }
 
+#pali-quiz button:not(:disabled):hover,
+#pali-quiz .square:not(:disabled):hover {
+  cursor: pointer;
+}
+
 #pali-quiz button {
   width: 150px;
   background-color: var(--dark-accent);

@@ -78,6 +78,13 @@ footer {
 	display: flex;
 	flex-direction: column;
 
+	button,
+	.square {
+		&:not(:disabled):hover {
+			cursor: pointer;
+		}
+	}
+
 	button {
 		width: 150px;
 		background-color: var(--dark-accent);

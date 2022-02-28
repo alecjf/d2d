@@ -25,11 +25,6 @@
   margin: 12px;
 }
 
-#dharma-gem #dropdowns-container select,
-#dharma-gem #dropdowns-container select#sides-dropdown option {
-  text-transform: capitalize;
-}
-
 #dharma-gem #scene-container {
   min-height: 1000px;
   -webkit-perspective: calc(10 * var(--dharma-base-dim));

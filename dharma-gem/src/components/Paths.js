@@ -1,6 +1,7 @@
 import "../css/paths.css";
 import { useState } from "react";
 import dharmaLists, { paliWords, thePath, justPaths } from "d2d-all-info";
+import fhLogo from "../images/fern-haus-site-logo.png";
 
 const Paths = ({ setPath, list, setList }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -89,8 +90,26 @@ const Paths = ({ setPath, list, setList }) => {
 				</div>
 				<div id="dropdowns-container">{listsDropdown()}</div>
 			</div>
-			<div id="select-path" onClick={() => setIsOpen(!isOpen)}>
-				SELECT A PATH
+			<div id="links">
+				<a id="parent-link" href="https://fern.haus/projects/d2d">
+					Door 2 Dharma
+				</a>
+				<div id="select-path" onClick={() => setIsOpen(!isOpen)}>
+					SELECT A PATH
+				</div>
+				<a
+					id="home-link"
+					href="https://fern.haus/"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Fern Haus&nbsp;
+					<img
+						id="logo-link"
+						src={fhLogo}
+						alt="Fern Haus Logo - House with Port Window and Fern Vines"
+					/>
+				</a>
 			</div>
 		</div>
 	);

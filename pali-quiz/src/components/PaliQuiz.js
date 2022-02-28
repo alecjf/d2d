@@ -2,6 +2,7 @@ import "../css/pali-quiz.css";
 import { useEffect, useState } from "react";
 import { paliWords, getRandomPaliWords, shuffle } from "d2d-all-info";
 import { Transition } from "react-transition-group";
+import fhLogo from "../images/fern-haus-site-logo.png";
 
 const PaliQuiz = (props) => {
 	const [data, setData] = useState({}),
@@ -220,7 +221,31 @@ const PaliQuiz = (props) => {
 
 	return (
 		<div id="pali-quiz">
-			<div id="header">
+			<header>
+				<a
+					href="https://fern.haus/"
+					className="fern-haus-link"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<section className="fern-haus-info">
+						<img
+							src={fhLogo}
+							alt="Fern Haus Logo - House with Port Window and Fern Vines"
+						/>
+						<h4>fern.haus</h4>
+					</section>
+				</a>
+				<section id="d2d-header">
+					<p>more web apps like this at</p>
+					<h2>
+						<a href="https://fern.haus/projects/d2d">
+							Door 2 Dharma
+						</a>
+					</h2>
+				</section>
+			</header>
+			<div id="description">
 				<h1>Pali Quiz</h1>
 				<h2>
 					A timed quiz where you match Pali words with their English
@@ -241,6 +266,22 @@ const PaliQuiz = (props) => {
 				{displayBoard()}
 				{displayScores()}
 			</div>
+			<footer>
+				<a
+					href="https://fern.haus/"
+					className="fern-haus-link"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<section className="fern-haus-info">
+						<img
+							src={fhLogo}
+							alt="Fern Haus Logo - House with Port Window and Fern Vines"
+						/>
+						<h4>fern.haus</h4>
+					</section>
+				</a>
+			</footer>
 		</div>
 	);
 };

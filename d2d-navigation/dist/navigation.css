@@ -1,0 +1,99 @@
+:root {
+  --menu-width: 200px;
+}
+
+#navigation,
+#hamburger {
+  -webkit-transition: var(--transition-time);
+  transition: var(--transition-time);
+  z-index: 9999999;
+}
+
+#navigation {
+  width: var(--menu-width);
+  height: 100vh;
+  padding-top: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: auto;
+  background-color: var(--dark-accent);
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+}
+
+#navigation ul li {
+  margin-bottom: 20px;
+}
+
+#navigation ul li a {
+  color: var(--light-accent);
+  text-decoration: none;
+}
+
+#navigation ul li a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+#navigation.closed {
+  left: calc(-1 * var(--menu-width));
+}
+
+#navigation.open {
+  left: 0;
+}
+
+#hamburger {
+  --hamburger-dim: 35px;
+  width: var(--hamburger-dim);
+  height: var(--hamburger-dim);
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+#hamburger div {
+  width: 100%;
+  height: 5px;
+  background-color: var(--dark-accent);
+  border: 0.5px solid var(--mid-accent);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 6px 0;
+  position: relative;
+  -webkit-transition: var(--transition-time);
+  transition: var(--transition-time);
+}
+
+#hamburger.hamburger-open {
+  left: var(--menu-width);
+}
+
+#hamburger.hamburger-open #top-line {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: 8px;
+}
+
+#hamburger.hamburger-open #btm-line {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  top: -14px;
+}
+
+#hamburger.hamburger-open #mid-line {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#hamburger.hamburger-closed {
+  left: 0;
+}
+
+#hamburger.hamburger-closed #mid-line {
+  visibility: visible;
+  opacity: 1;
+}
+/*# sourceMappingURL=navigation.css.map */

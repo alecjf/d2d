@@ -1,5 +1,4 @@
-#pali-lookup {
-  height: 100%;
+header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7,38 +6,146 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header .fern-haus-link {
+  width: 100%;
+  background-color: cadetblue;
+  display: inline-block;
+  text-decoration: none;
+}
+
+header .fern-haus-link:hover {
+  background-color: #333;
+}
+
+header .fern-haus-link:hover .fern-haus-info img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+header .fern-haus-link:hover .fern-haus-info h4 {
+  color: #ccc;
+}
+
+header .fern-haus-link .fern-haus-info {
+  padding: 10px;
+  color: white;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .fern-haus-link .fern-haus-info img {
+  height: 40px;
+  width: auto;
+}
+
+header .fern-haus-link .fern-haus-info h4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+}
+
+header #d2d-header {
+  width: 100%;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header #d2d-header a {
+  color: var(--dark-accent);
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+header #d2d-header a:hover {
+  color: var(--mid-accent);
+}
+
+header #d2d-header h2,
+header #d2d-header p {
+  font-weight: 100;
+  margin: 0 auto;
+}
+
+html,
+body,
+#root,
+#pali-lookup,
+#all-words {
+  height: 100%;
+}
+
+#pali-lookup {
   text-align: center;
 }
 
-#pali-lookup #eng-words {
+#pali-lookup header {
+  height: 150px;
+}
+
+#pali-lookup #all-words {
+  height: calc(100% - 150px);
+}
+
+#pali-lookup #all-words #eng-words {
+  background-color: var(--light-accent);
+}
+
+#pali-lookup #all-words #eng-words .selected {
+  background-color: white;
+}
+
+#pali-lookup #all-words #pali-words {
   background-color: var(--dark-accent);
   color: white;
 }
 
-#pali-lookup #eng-words .selected {
+#pali-lookup #all-words #pali-words .selected {
   background-color: var(--mid-accent);
   color: black;
 }
 
-#pali-lookup #pali-words {
-  background-color: var(--light-accent);
-}
-
-#pali-lookup #pali-words .selected {
-  background-color: white;
-}
-
-#pali-lookup .words {
-  width: 100%;
-  height: 50vh;
+#pali-lookup #all-words .words {
+  height: 50%;
   overflow: auto;
 }
 
-#pali-lookup .words div {
+#pali-lookup #all-words .words div {
   padding: 5px 10px;
 }
 
-#pali-lookup .words .selected {
+#pali-lookup #all-words .words .selected {
   font: bold 1.9em "Barlow Semi Condensed";
   -webkit-box-flex: 1;
       -ms-flex: 1;

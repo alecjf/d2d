@@ -1,0 +1,146 @@
+@import url("https://fern.haus/master.css");
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	margin: 0;
+}
+
+html,
+body,
+#root,
+#dharma-home {
+	height: 100%;
+}
+
+#dharma-home {
+	// overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	header {
+		width: 100%;
+		background-image: url("./images/home-bg-faded.png");
+		background-position: top right;
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		flex: 1;
+		flex-direction: column;
+		gap: 40px;
+		padding-bottom: 40px;
+
+		#name {
+			height: 160px;
+
+			& > * {
+				text-transform: uppercase;
+			}
+
+			#door,
+			#dharma {
+				font-family: "Barlow Semi Condensed";
+			}
+
+			#door {
+				font-size: 6.5em;
+			}
+
+			#two {
+				color: cadetblue;
+				font: bold 10.2em "Times";
+				transform: scale(1.3, 1);
+				position: relative;
+				top: -0.77em;
+				left: -1px;
+			}
+
+			#dharma {
+				font-size: 4.1em;
+				position: relative;
+				top: -3.35em;
+			}
+		}
+
+		h2 {
+			font-weight: 300;
+			font-size: 1.8em;
+			margin: 0;
+		}
+
+		#home-nav-links {
+			*:not(br) {
+				width: 150px;
+				background-color: var(--dark-accent);
+				color: white;
+				border: 0;
+				border-radius: 10px;
+				box-sizing: border-box;
+				display: inline-block;
+				margin: 8px;
+				padding: 8px 0;
+				box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+				font: bold 1.2em "Barlow Semi Condensed";
+				text-decoration: none;
+			}
+
+			*:hover {
+				background-color: antiquewhite;
+				color: orange;
+				border-color: orange;
+			}
+		}
+	}
+
+	footer {
+		width: 100%;
+		text-align: center;
+
+		.fern-haus-link {
+			width: 100%;
+			background-color: cadetblue;
+			display: inline-block;
+			text-decoration: none;
+
+			&:hover {
+				background-color: #333;
+
+				.fern-haus-info {
+					img {
+						filter: grayscale(100%);
+						filter: invert(100%);
+					}
+
+					h4 {
+						color: #ccc;
+					}
+				}
+			}
+
+			.fern-haus-info {
+				padding: 10px;
+				color: white;
+				display: inline-flex;
+				align-items: center;
+
+				img {
+					height: 40px;
+					width: auto;
+				}
+
+				h4 {
+					display: flex;
+					align-items: center;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}

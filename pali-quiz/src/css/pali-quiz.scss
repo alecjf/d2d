@@ -1,10 +1,82 @@
+html,
+body,
+#root,
 #pali-quiz {
-	padding: 20px 0;
+	height: 100%;
+}
+
+header,
+footer {
+	.fern-haus-link {
+		width: 100%;
+		background-color: cadetblue;
+		display: inline-block;
+		text-decoration: none;
+
+		&:hover {
+			background-color: #333;
+
+			.fern-haus-info {
+				img {
+					filter: grayscale(100%);
+					filter: invert(100%);
+				}
+
+				h4 {
+					color: #ccc;
+				}
+			}
+		}
+
+		.fern-haus-info {
+			padding: 10px;
+			color: white;
+			display: inline-flex;
+			align-items: center;
+
+			img {
+				height: 40px;
+				width: auto;
+			}
+
+			h4 {
+				display: flex;
+				align-items: center;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	#d2d-header {
+		background-color: white;
+		padding: 20px;
+
+		a {
+			color: var(--dark-accent);
+			font-family: "Barlow Semi Condensed", sans-serif;
+
+			&:hover {
+				color: var(--mid-accent);
+			}
+		}
+
+		h2,
+		p {
+			font-weight: 100;
+			margin: 0 auto;
+		}
+	}
+}
+
+#pali-quiz {
 	text-align: center;
 	// vars:
 	--square-dim: 110px;
 	--margin: 10px;
 	--max-num-per-row: 4;
+
+	display: flex;
+	flex-direction: column;
 
 	button {
 		width: 150px;
@@ -27,7 +99,9 @@
 		}
 	}
 
-	#header {
+	#description {
+		flex: 1;
+
 		h1 {
 			font-family: "Barlow Semi Condensed", sans-serif;
 		}
@@ -39,10 +113,11 @@
 	}
 
 	#board-and-scores {
-		min-height: 200px;
+		// min-height: 200px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding-bottom: 40px;
 
 		#board,
 		#grid,

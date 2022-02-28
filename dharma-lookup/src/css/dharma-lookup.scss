@@ -1,8 +1,74 @@
+header,
+footer {
+	.fern-haus-link {
+		width: 100%;
+		background-color: cadetblue;
+		display: inline-block;
+		text-decoration: none;
+
+		&:hover {
+			background-color: #333;
+
+			.fern-haus-info {
+				img {
+					filter: grayscale(100%);
+					filter: invert(100%);
+				}
+
+				h4 {
+					color: #ccc;
+				}
+			}
+		}
+
+		.fern-haus-info {
+			padding: 10px;
+			color: white;
+			display: inline-flex;
+			align-items: center;
+
+			img {
+				height: 40px;
+				width: auto;
+			}
+
+			h4 {
+				display: flex;
+				align-items: center;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	#d2d-header {
+		background-color: white;
+		padding: 20px;
+
+		a {
+			color: var(--dark-accent);
+			font-family: "Barlow Semi Condensed", sans-serif;
+
+			&:hover {
+				color: var(--mid-accent);
+			}
+		}
+
+		h2,
+		p {
+			font-weight: 100;
+			margin: 0 auto;
+		}
+	}
+}
+
+footer {
+	margin-top: 120px;
+}
+
 #dharma-lookup {
 	width: 100vw;
 	height: 100vh;
 	overflow: auto;
-	padding-bottom: 120px;
 	box-sizing: border-box;
 	text-align: center;
 

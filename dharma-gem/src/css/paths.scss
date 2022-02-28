@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap");
-
 #paths {
 	--main-height: 295px;
 
@@ -23,8 +21,11 @@
 
 	* {
 		font-size: 14px;
-		font-family: "Archivo Narrow";
-		text-transform: uppercase;
+		font-family: "Archivo Narrow", sans-serif;
+
+		&:not(select):not(option) {
+			text-transform: uppercase;
+		}
 	}
 
 	#main {
@@ -111,18 +112,51 @@
 		}
 	}
 
-	#select-path {
+	#links {
 		height: 35px;
+		width: 100%;
 		background-color: var(--mid-accent);
+		box-sizing: border-box;
 		border-bottom: 2px solid #004d80;
 		font-weight: bold;
-		color: #004d80;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 
-		&:hover {
-			cursor: pointer;
+		& > * {
+			height: 100%;
+			width: 30vw;
+			box-sizing: border-box;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+		}
+
+		#home-link,
+		#parent-link {
+			color: #004d80;
+
+			&:hover {
+				background-color: var(--light-accent);
+			}
+		}
+
+		#home-link {
+			#logo-link {
+				height: 100%;
+				width: auto;
+				flex: 0;
+			}
+		}
+
+		#select-path {
+			background-color: #004d80;
+			color: white;
+			justify-content: center;
+
+			&:hover {
+				background-color: white;
+				color: #004d80;
+				cursor: pointer;
+			}
 		}
 	}
 }

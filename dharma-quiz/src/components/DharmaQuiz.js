@@ -2,6 +2,7 @@ import "../css/dharma-quiz.css";
 import { useState, useEffect } from "react";
 import { Transition } from "react-transition-group";
 import { getRandomDharmaQuiz, shuffle } from "d2d-all-info";
+import fhLogo from "../images/fern-haus-site-logo.png";
 
 const DharmaQuiz = (props) => {
 	function shuffleItems(data) {
@@ -255,6 +256,30 @@ const DharmaQuiz = (props) => {
 							...transitionStyles[state],
 						}}
 					>
+						<header>
+							<a
+								href="https://fern.haus/"
+								className="fern-haus-link"
+								target="_blank"
+								rel="noreferrer"
+							>
+								<section className="fern-haus-info">
+									<img
+										src={fhLogo}
+										alt="Fern Haus Logo - House with Port Window and Fern Vines"
+									/>
+									<h4>fern.haus</h4>
+								</section>
+							</a>
+							<section id="d2d-header">
+								<p>more web apps like this at</p>
+								<h2>
+									<a href="https://fern.haus/projects/d2d">
+										Door 2 Dharma
+									</a>
+								</h2>
+							</section>
+						</header>
 						<div id="header">
 							Sort the terms by the following categories:
 							<br />
@@ -264,6 +289,22 @@ const DharmaQuiz = (props) => {
 						</div>
 						{makeItemBoxes()}
 						{makeCategoryBoxes()}
+						<footer>
+							<a
+								href="https://fern.haus/"
+								className="fern-haus-link"
+								target="_blank"
+								rel="noreferrer"
+							>
+								<section className="fern-haus-info">
+									<img
+										src={fhLogo}
+										alt="Fern Haus Logo - House with Port Window and Fern Vines"
+									/>
+									<h4>fern.haus</h4>
+								</section>
+							</a>
+						</footer>
 					</div>
 				)}
 			</Transition>

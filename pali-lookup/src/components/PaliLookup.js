@@ -1,6 +1,7 @@
 import "../css/pali-lookup.css";
 import { useEffect, useState } from "react";
 import { paliWords } from "d2d-all-info";
+import fhLogo from "../images/fern-haus-site-logo.png";
 
 const PaliLookup = (props) => {
 	const sortedPali = Object.keys(paliWords).sort(),
@@ -23,10 +24,16 @@ const PaliLookup = (props) => {
 		//		scrollToSelected(wordPair.pali, wordPair.eng);
 		const paliElem = document.getElementById("pali-words"),
 			engElem = document.getElementById("eng-words"),
-			paliWordCoord = document.getElementById(wordPair.pali).offsetTop,
+			headerElemBottom = document
+				.getElementsByTagName("header")[0]
+				.getBoundingClientRect().bottom,
+			paliWordCoord =
+				document.getElementById(wordPair.pali).offsetTop -
+				headerElemBottom,
 			engWordCoord =
 				document.getElementById(wordPair.eng).offsetTop -
 				paliElem.getBoundingClientRect().bottom;
+		console.log(paliWordCoord, engWordCoord, headerElemBottom);
 		paliElem.scrollTo({ top: paliWordCoord, left: 0, behavior: "smooth" });
 		engElem.scrollTo({ top: engWordCoord, left: 0, behavior: "smooth" });
 	});
@@ -63,8 +70,34 @@ const PaliLookup = (props) => {
 
 	return (
 		<div id="pali-lookup">
-			{makePaliWords()}
-			{makeEngWords()}
+			<header>
+				<a
+					href="https://fern.haus/"
+					className="fern-haus-link"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<section className="fern-haus-info">
+						<img
+							src={fhLogo}
+							alt="Fern Haus Logo - House with Port Window and Fern Vines"
+						/>
+						<h4>fern.haus</h4>
+					</section>
+				</a>
+				<section id="d2d-header">
+					<p>more web apps like this at</p>
+					<h2>
+						<a href="https://fern.haus/projects/d2d">
+							Door 2 Dharma
+						</a>
+					</h2>
+				</section>
+			</header>
+			<div id="all-words">
+				{makePaliWords()}
+				{makeEngWords()}
+			</div>
 		</div>
 	);
 };

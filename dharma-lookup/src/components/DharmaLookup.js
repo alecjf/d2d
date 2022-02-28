@@ -2,6 +2,7 @@ import "../css/dharma-lookup.css";
 import { useState, useEffect } from "react";
 import dharmaLists from "d2d-all-info";
 import ListBox, { capitalize } from "d2d-listbox-main";
+import fhLogo from "../images/fern-haus-site-logo.png";
 
 const DharmaLookup = (props) => {
 	const [fromTop, setFromTop] = useState(0);
@@ -34,6 +35,30 @@ const DharmaLookup = (props) => {
 
 	return (
 		<div id="dharma-lookup">
+			<header>
+				<a
+					href="https://fern.haus/"
+					className="fern-haus-link"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<section className="fern-haus-info">
+						<img
+							src={fhLogo}
+							alt="Fern Haus Logo - House with Port Window and Fern Vines"
+						/>
+						<h4>fern.haus</h4>
+					</section>
+				</a>
+				<section id="d2d-header">
+					<p>more web apps like this at</p>
+					<h2>
+						<a href="https://fern.haus/projects/d2d">
+							Door 2 Dharma
+						</a>
+					</h2>
+				</section>
+			</header>
 			<div
 				id="back-to-top"
 				style={{ top: fromTop }}
@@ -53,6 +78,22 @@ const DharmaLookup = (props) => {
 			{Object.keys(dharmaLists).map((key) => (
 				<ListBox title={key} key={`lookup-list-box-${key}`} />
 			))}
+			<footer>
+				<a
+					href="https://fern.haus/"
+					className="fern-haus-link"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<section className="fern-haus-info">
+						<img
+							src={fhLogo}
+							alt="Fern Haus Logo - House with Port Window and Fern Vines"
+						/>
+						<h4>fern.haus</h4>
+					</section>
+				</a>
+			</footer>
 		</div>
 	);
 };

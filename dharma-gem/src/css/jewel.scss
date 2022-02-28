@@ -22,11 +22,6 @@
 		select {
 			width: 250px;
 			margin: 12px;
-
-			&,
-			&#sides-dropdown option {
-				text-transform: capitalize;
-			}
 		}
 	}
 

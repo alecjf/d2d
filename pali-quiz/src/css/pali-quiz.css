@@ -1,9 +1,102 @@
+html,
+body,
+#root,
 #pali-quiz {
-  padding: 20px 0;
+  height: 100%;
+}
+
+header .fern-haus-link,
+footer .fern-haus-link {
+  width: 100%;
+  background-color: cadetblue;
+  display: inline-block;
+  text-decoration: none;
+}
+
+header .fern-haus-link:hover,
+footer .fern-haus-link:hover {
+  background-color: #333;
+}
+
+header .fern-haus-link:hover .fern-haus-info img,
+footer .fern-haus-link:hover .fern-haus-info img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+header .fern-haus-link:hover .fern-haus-info h4,
+footer .fern-haus-link:hover .fern-haus-info h4 {
+  color: #ccc;
+}
+
+header .fern-haus-link .fern-haus-info,
+footer .fern-haus-link .fern-haus-info {
+  padding: 10px;
+  color: white;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .fern-haus-link .fern-haus-info img,
+footer .fern-haus-link .fern-haus-info img {
+  height: 40px;
+  width: auto;
+}
+
+header .fern-haus-link .fern-haus-info h4,
+footer .fern-haus-link .fern-haus-info h4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+}
+
+header #d2d-header,
+footer #d2d-header {
+  background-color: white;
+  padding: 20px;
+}
+
+header #d2d-header a,
+footer #d2d-header a {
+  color: var(--dark-accent);
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+header #d2d-header a:hover,
+footer #d2d-header a:hover {
+  color: var(--mid-accent);
+}
+
+header #d2d-header h2,
+header #d2d-header p,
+footer #d2d-header h2,
+footer #d2d-header p {
+  font-weight: 100;
+  margin: 0 auto;
+}
+
+#pali-quiz {
   text-align: center;
   --square-dim: 110px;
   --margin: 10px;
   --max-num-per-row: 4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #pali-quiz button {
@@ -28,17 +121,22 @@
   color: black;
 }
 
-#pali-quiz #header h1 {
+#pali-quiz #description {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#pali-quiz #description h1 {
   font-family: "Barlow Semi Condensed", sans-serif;
 }
 
-#pali-quiz #header h2 {
+#pali-quiz #description h2 {
   font-weight: 100;
   margin-bottom: 0;
 }
 
 #pali-quiz #board-and-scores {
-  min-height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,6 +146,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-bottom: 40px;
 }
 
 #pali-quiz #board-and-scores #board,

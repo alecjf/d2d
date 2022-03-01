@@ -90,5 +90,11 @@ footer {
 		z-index: 999;
 		padding-top: 3px;
 		box-sizing: border-box;
+
+		&:hover {
+			background-color: var(--mid-accent);
+			color: white;
+			cursor: pointer;
+		}
 	}
 }

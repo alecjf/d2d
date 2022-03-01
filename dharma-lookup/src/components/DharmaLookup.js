@@ -28,10 +28,8 @@ const DharmaLookup = (props) => {
 		setFromTop(window.innerHeight - 30)
 	);
 
-	const dom = document.getElementById("dharma-lookup");
-
 	function scrollSectionHandler(event) {
-		dom.scrollTo({
+		document.getElementById("dharma-lookup").scrollTo({
 			top: document
 				.getElementById(`${event.target.value} lookup`)
 				.getBoundingClientRect().top,
@@ -41,7 +39,7 @@ const DharmaLookup = (props) => {
 	}
 
 	function backToTopHandler(event) {
-		dom.scrollTo({
+		document.getElementById("dharma-lookup").scrollTo({
 			top: 0,
 			left: 0,
 			behavior: "smooth",

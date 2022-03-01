@@ -111,4 +111,10 @@ footer {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+#dharma-lookup #back-to-top:hover {
+  background-color: var(--mid-accent);
+  color: white;
+  cursor: pointer;
+}
 /*# sourceMappingURL=dharma-lookup.css.map */

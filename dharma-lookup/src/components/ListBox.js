@@ -1,6 +1,6 @@
 import "../css/list-box.css";
 
-function ListBox({ title, list, dharmaLists, paliWords }) {
+function ListBox({ title, dharmaLists, paliWords }) {
 	const WordPair = ({ left, right }) => {
 		return (
 			<div key={`pair-${left}`} className="pair">

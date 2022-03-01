@@ -1,5 +1,3 @@
-import React from "react";
-
 const paliWords = {
 	ajiva: "livelihood",
 	attavadupadana: "self-doctrine clinging",
@@ -358,5 +356,4 @@ const getPathsWithoutCategory = (path) => path.map((cat) => cat.parts).flat();
 
 const justPaths = getPathsWithoutCategory(thePath);
 
-export default dharmaLists;
-export { paliWords, thePath, justPaths };
+console.log(JSON.stringify({ dharmaLists, justPaths, paliWords, thePath }));

@@ -1,8 +1,15 @@
 import React from "react";
-import dharmaLists, { paliWords } from "d2d-all-info";
-import { capitalize } from "d2d-listbox-main";
+import { capitalize } from "./ListBox";
 
-const Face = ({ pali, parts, suttas, setList, setPath }) => {
+const Face = ({
+	pali,
+	parts,
+	suttas,
+	setList,
+	setPath,
+	dharmaLists,
+	paliWords,
+}) => {
 	const PaliWord = ({ pali }) => (
 		<div className="pali-word">
 			<div>
@@ -26,13 +33,13 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 		function getAllEmbeddedSuttasRecursive(parts, result = []) {
 			parts instanceof Array &&
 				parts
-					.filter((p) => p.suttas)
+					.filter((p) => p?.suttas)
 					.forEach((p) =>
 						p.suttas.forEach((sut) => result.push(sut))
 					);
 			parts instanceof Array &&
 				parts
-					.filter((p) => p.parts)
+					.filter((p) => p?.parts)
 					.forEach((p) => getAllEmbeddedSuttasRecursive(p.parts));
 			return result;
 		}
@@ -94,6 +101,7 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 			concatenate,
 			result = []
 		) {
+			if (!obj) return;
 			if (obj.constructor === {}.constructor) {
 				if (
 					obj.name !== "Four Meditative Absorptions" &&
@@ -113,7 +121,7 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 					let holder = [];
 					obj.name &&
 						holder.push(
-							<>
+							<React.Fragment key={pali + " - " + obj.name}>
 								<div className="spacer"></div>
 								<span className="name" key={obj.name}>
 									<b>
@@ -121,12 +129,15 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 									</b>
 									<br />
 								</span>
-							</>
+							</React.Fragment>
 						);
 					obj.definition &&
 						holder.push(
 							obj.definition !== "desire or greed" && (
-								<div className="spacer"></div>
+								<div
+									className="spacer"
+									key={obj.pali + " - " + obj.definition}
+								></div>
 							),
 							<span className="definition" key={obj.definition}>
 								<b>
@@ -186,45 +197,41 @@ const Face = ({ pali, parts, suttas, setList, setPath }) => {
 		<div className="face">
 			<div className="side-triangle left"></div>
 			<div className="side-triangle right"></div>
-			{document.getElementById("scene")?.className === "clicked" && (
+			<PaliWord {...{ pali }} />
+			<Suttas />
+			<span className="right-header">
+				Right {capitalize(paliWords[pali])} includes:
+			</span>
+			{paliWords[pali] === "mindfulness" ? (
+				<div className="spacer"></div>
+			) : (
+				<br />
+			)}
+			<Parts />
+			{paliWords[pali] === "effort" && (
 				<>
-					<PaliWord {...{ pali }} />
-					<Suttas />
-					<span className="right-header">
-						Right {capitalize(paliWords[pali])} includes:
-					</span>
-					{paliWords[pali] === "mindfulness" ? (
-						<div className="spacer"></div>
-					) : (
-						<br />
-					)}
-					<Parts />
-					{paliWords[pali] === "effort" && (
-						<>
-							<div className="spacer"></div>
-							<table id="right-effort-table">
-								<thead>
-									<tr>
-										<th></th>
-										<th>unarisen</th>
-										<th>arisen</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>unwholesome states of mind</td>
-										<td>prevent</td>
-										<td>abandon</td>
-									</tr>
-									<tr>
-										<td>wholesome states of mind</td>
-										<td>arouse</td>
-										<td>maintain</td>
-									</tr>
-								</tbody>
-							</table>
-						</>
-					)}
+					<div className="spacer"></div>
+					<table id="right-effort-table">
+						<thead>
+							<tr>
+								<th></th>
+								<th>unarisen</th>
+								<th>arisen</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>unwholesome states of mind</td>
+								<td>prevent</td>
+								<td>abandon</td>
+							</tr>
+							<tr>
+								<td>wholesome states of mind</td>
+								<td>arouse</td>
+								<td>maintain</td>
+							</tr>
+						</tbody>
+					</table>
 				</>
 			)}
 		</div>

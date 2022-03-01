@@ -1,19 +1,21 @@
+:root {
+	--dharma-base-dim: 480px;
+}
+
 #dharma-gem {
-	--dharma-base-dim: 575px;
 	--tilt: -30deg;
 	--cool-purple: rgb(113, 68, 184);
 
 	width: calc(200px + var(--dharma-base-dim));
-	margin: 75px auto 0;
+	display: flex;
+	justify-content: center;
+	margin: 180px auto 0;
 	text-align: center;
-	text-size-adjust: none;
+	// text-size-adjust: none;
 
 	#dropdowns-container {
 		width: 100%;
 		min-width: var(--dharma-base-dim);
-		position: relative;
-		//		top: 0;
-		//		left: 0;
 		z-index: 2;
 		text-align: center;
 
@@ -26,7 +28,7 @@
 	#scene-container {
 		min-height: 1000px;
 		perspective: calc(10 * var(--dharma-base-dim));
-		position: relative;
+		position: absolute;
 		z-index: 1;
 
 		&,
@@ -38,18 +40,27 @@
 			width: var(--dharma-base-dim);
 			height: var(--dharma-base-dim);
 			margin: auto;
-			transform: translate3d(0, -535px, -5000px);
 
 			&,
 			.jewel {
 				transition: transform 2.5s ease-in-out;
 			}
 
+			&:not(.clicked) {
+				transform: translate3d(0, -535px, -2400px);
+
+				.face {
+					& > * {
+						display: none;
+					}
+				}
+			}
+
 			&.clicked {
 				--dharma-tilt: -40deg;
 				--translate-y: 290px;
 
-				transform: translate3d(0, 0, -1000px);
+				transform: translate3d(0, 0, 0);
 
 				.jewel {
 					&.side1 {
@@ -100,7 +111,7 @@
 					.pyramid {
 						.face {
 							font-family: "Archivo Narrow", sans-serif;
-							font-size: 1.1em;
+							font-size: 0.9em;
 
 							.right-header,
 							.name,
@@ -187,7 +198,7 @@
 								}
 
 								.bullet {
-									font-size: 2em;
+									font-size: 1.8em;
 									line-height: 0;
 									top: 6.5px;
 									position: relative;
@@ -217,7 +228,7 @@
 
 								div {
 									font-style: italic;
-									line-height: 1.25em;
+									line-height: 1em;
 
 									span {
 										font-size: 1.6em;
@@ -228,7 +239,7 @@
 
 							.sutta {
 								padding-bottom: 7px;
-								line-height: 1.1em;
+								line-height: 1em;
 
 								a {
 									color: #004d80;
@@ -347,7 +358,7 @@
 
 						&,
 						* {
-							line-height: 1.45rem;
+							line-height: 1.2rem;
 						}
 
 						&:nth-child(odd) {
@@ -395,54 +406,6 @@
 								rotateX(30deg);
 						}
 					}
-				}
-			}
-		}
-	}
-
-	.list-box {
-		--width: 600px;
-
-		transition: opacity 1.25s, transform 0s !important;
-		position: absolute;
-		top: 50px;
-
-		.close-info {
-			position: absolute;
-			top: 3%;
-			left: calc(100% - 30px);
-			font-weight: bold;
-			color: bisque;
-			z-index: 10;
-			transition: 0s !important;
-
-			&:hover {
-				color: maroon;
-				cursor: pointer;
-			}
-		}
-
-		&.hidden {
-			opacity: 0;
-
-			&:hover {
-				cursor: default;
-			}
-		}
-
-		&.shown {
-			opacity: 1;
-		}
-
-		table {
-			width: 100%;
-
-			td {
-				width: 50%;
-				border: 1px solid black;
-
-				&.info-def {
-					background-color: antiquewhite;
 				}
 			}
 		}

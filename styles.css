@@ -1,0 +1,163 @@
+@import url("https://fern.haus/master.css");
+#dharma-home {
+  min-height: 100%;
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dharma-home::after {
+  content: "";
+  background-image: url("./images/home-bg.jpg");
+  background-size: cover;
+  background-position: top right;
+  background-attachment: scroll;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+#dharma-home #header {
+  position: relative;
+  top: 6vh;
+}
+
+#dharma-home #header span {
+  display: block;
+  text-transform: uppercase;
+}
+
+#dharma-home #header #door,
+#dharma-home #header #dharma {
+  font-family: "Barlow Semi Condensed";
+}
+
+#dharma-home #header #door {
+  font-size: 6.5em;
+}
+
+#dharma-home #header #two {
+  color: cadetblue;
+  font: bold 10.2em "Times";
+  -webkit-transform: scale(1.3, 1);
+          transform: scale(1.3, 1);
+  position: relative;
+  top: -0.77em;
+  left: -1px;
+}
+
+#dharma-home #header #dharma {
+  font-size: 4.1em;
+  position: relative;
+  top: -3.35em;
+}
+
+#dharma-home h2 {
+  font-weight: 300;
+  font-size: 1.8em;
+  position: relative;
+  top: -5.7em;
+}
+
+#dharma-home #home-nav-links {
+  position: relative;
+  top: -8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#dharma-home #home-nav-links * {
+  width: 150px;
+  background-color: var(--dark-accent);
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 8px;
+  padding: 8px 0;
+  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  font: bold 1.2em "Barlow Semi Condensed";
+  text-decoration: none;
+}
+
+#dharma-home #home-nav-links *:hover {
+  background-color: antiquewhite;
+  color: orange;
+  border-color: orange;
+}
+
+footer .fern-haus-link {
+  width: 100%;
+  background-color: cadetblue;
+  display: inline-block;
+  text-decoration: none;
+}
+
+footer .fern-haus-link:hover {
+  background-color: #333;
+}
+
+footer .fern-haus-link:hover .fern-haus-info img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+footer .fern-haus-link:hover .fern-haus-info h4 {
+  color: #ccc;
+}
+
+footer .fern-haus-link .fern-haus-info {
+  padding: 10px;
+  color: white;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer .fern-haus-link .fern-haus-info img {
+  height: 40px;
+  width: auto;
+}
+
+footer .fern-haus-link .fern-haus-info h4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,20 +1,24 @@
+:root {
+  --dharma-base-dim: 480px;
+}
+
 #dharma-gem {
-  --dharma-base-dim: 575px;
   --tilt: -30deg;
   --cool-purple: rgb(113, 68, 184);
   width: calc(200px + var(--dharma-base-dim));
-  margin: 75px auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 180px auto 0;
   text-align: center;
-  -webkit-text-size-adjust: none;
-     -moz-text-size-adjust: none;
-      -ms-text-size-adjust: none;
-          text-size-adjust: none;
 }
 
 #dharma-gem #dropdowns-container {
   width: 100%;
   min-width: var(--dharma-base-dim);
-  position: relative;
   z-index: 2;
   text-align: center;
 }
@@ -28,7 +32,7 @@
   min-height: 1000px;
   -webkit-perspective: calc(10 * var(--dharma-base-dim));
           perspective: calc(10 * var(--dharma-base-dim));
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
 
@@ -42,8 +46,6 @@
   width: var(--dharma-base-dim);
   height: var(--dharma-base-dim);
   margin: auto;
-  -webkit-transform: translate3d(0, -535px, -5000px);
-          transform: translate3d(0, -535px, -5000px);
 }
 
 #dharma-gem #scene-container #scene,
@@ -54,11 +56,20 @@
   transition: transform 2.5s ease-in-out, -webkit-transform 2.5s ease-in-out;
 }
 
+#dharma-gem #scene-container #scene:not(.clicked) {
+  -webkit-transform: translate3d(0, -535px, -2400px);
+          transform: translate3d(0, -535px, -2400px);
+}
+
+#dharma-gem #scene-container #scene:not(.clicked) .face > * {
+  display: none;
+}
+
 #dharma-gem #scene-container #scene.clicked {
   --dharma-tilt: -40deg;
   --translate-y: 290px;
-  -webkit-transform: translate3d(0, 0, -1000px);
-          transform: translate3d(0, 0, -1000px);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel.side1 {
@@ -103,7 +114,7 @@
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face {
   font-family: "Archivo Narrow", sans-serif;
-  font-size: 1.1em;
+  font-size: 0.9em;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .right-header,
@@ -166,7 +177,7 @@
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .list .bullet {
-  font-size: 2em;
+  font-size: 1.8em;
   line-height: 0;
   top: 6.5px;
   position: relative;
@@ -197,7 +208,7 @@
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .pali-word div {
   font-style: italic;
-  line-height: 1.25em;
+  line-height: 1em;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .pali-word div span {
@@ -207,7 +218,7 @@
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .sutta {
   padding-bottom: 7px;
-  line-height: 1.1em;
+  line-height: 1em;
 }
 
 #dharma-gem #scene-container #scene.clicked .jewel .pyramid .face .sutta a {
@@ -307,7 +318,7 @@
 
 #dharma-gem #scene-container #scene .jewel .pyramid .face,
 #dharma-gem #scene-container #scene .jewel .pyramid .face * {
-  line-height: 1.45rem;
+  line-height: 1.2rem;
 }
 
 #dharma-gem #scene-container #scene .jewel .pyramid .face:nth-child(odd) {
@@ -336,56 +347,5 @@
 #dharma-gem #scene-container #scene .jewel .pyramid .face:nth-child(4) {
   -webkit-transform: rotateY(270deg) translate3d(0, 0, calc((var(--dharma-base-dim) / 2))) rotateX(30deg);
           transform: rotateY(270deg) translate3d(0, 0, calc((var(--dharma-base-dim) / 2))) rotateX(30deg);
-}
-
-#dharma-gem .list-box {
-  --width: 600px;
-  -webkit-transition: opacity 1.25s, -webkit-transform 0s !important;
-  transition: opacity 1.25s, -webkit-transform 0s !important;
-  transition: opacity 1.25s, transform 0s !important;
-  transition: opacity 1.25s, transform 0s, -webkit-transform 0s !important;
-  position: absolute;
-  top: 50px;
-}
-
-#dharma-gem .list-box .close-info {
-  position: absolute;
-  top: 3%;
-  left: calc(100% - 30px);
-  font-weight: bold;
-  color: bisque;
-  z-index: 10;
-  -webkit-transition: 0s !important;
-  transition: 0s !important;
-}
-
-#dharma-gem .list-box .close-info:hover {
-  color: maroon;
-  cursor: pointer;
-}
-
-#dharma-gem .list-box.hidden {
-  opacity: 0;
-}
-
-#dharma-gem .list-box.hidden:hover {
-  cursor: default;
-}
-
-#dharma-gem .list-box.shown {
-  opacity: 1;
-}
-
-#dharma-gem .list-box table {
-  width: 100%;
-}
-
-#dharma-gem .list-box table td {
-  width: 50%;
-  border: 1px solid black;
-}
-
-#dharma-gem .list-box table td.info-def {
-  background-color: antiquewhite;
 }
 /*# sourceMappingURL=jewel.css.map */

@@ -1,15 +1,13 @@
 #paths {
 	--main-height: 295px;
 
-	width: 100%;
-	min-width: 775px;
+	min-width: calc(200px + var(--dharma-base-dim));
 	margin: auto;
-	position: relative;
-	z-index: 1000000;
 	position: absolute;
 	left: 0;
 	transition: top 0.75s ease-in-out;
 	transform: translateZ(100px);
+	z-index: 1000000;
 
 	&.closed {
 		top: calc(-1 * var(--main-height));

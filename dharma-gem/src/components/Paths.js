@@ -1,10 +1,27 @@
 import "../css/paths.css";
-import { useState } from "react";
-import dharmaLists, { paliWords, thePath, justPaths } from "d2d-all-info";
+import { useEffect, useState } from "react";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
-const Paths = ({ setPath, list, setList }) => {
-	const [isOpen, setIsOpen] = useState(false);
+const Paths = ({
+	setPath,
+	list,
+	setList,
+	dharmaLists,
+	justPaths,
+	paliWords,
+	thePath,
+}) => {
+	const [isOpen, setIsOpen] = useState(undefined);
+
+	useEffect(() => {
+		const cn = document.getElementById("scene").className;
+		document.getElementById("scene").className = isOpen
+			? cn.replaceAll("clicked", "")
+			: isOpen !== undefined && cn + " clicked";
+		// set to undefined, not "CLOSED"
+		// so that the clicked className will be removed:
+		isOpen && setList(undefined);
+	}, [isOpen, setList]);
 
 	function getPathGroups() {
 		let result = {};
@@ -17,18 +34,14 @@ const Paths = ({ setPath, list, setList }) => {
 		return result;
 	}
 
-	const pathNames = justPaths.map((path) => paliWords[path.pali]);
+	const pathGroups = getPathGroups(),
+		pathNames = justPaths.map((path) => paliWords[path.pali]);
 
 	function sidesHandler(path) {
 		setPath(pathNames.indexOf(path) + 1);
-		const sceneDOM = document.getElementById("scene");
-		if (!(sceneDOM.className === "clicked")) {
-			sceneDOM.className = "clicked";
-		}
 		setIsOpen(false);
+		console.log(pathNames.indexOf(path) + 1);
 	}
-
-	const obj = getPathGroups();
 
 	const processKey = (key) =>
 		key
@@ -51,9 +64,9 @@ const Paths = ({ setPath, list, setList }) => {
 					setList(e.target.value);
 					setIsOpen(false);
 				}}
-				value={list}
+				value={list || "CLOSED"}
 			>
-				<option value="TITLE" disabled>
+				<option value="CLOSED" disabled>
 					BUDDHIST LISTS
 				</option>
 				{result}
@@ -74,10 +87,10 @@ const Paths = ({ setPath, list, setList }) => {
 					</a>
 				</div>
 				<div id="path-groups">
-					{Object.keys(obj).map((key) => (
+					{Object.keys(pathGroups).map((key) => (
 						<div key={`path-group-${key}`} className="path-group">
 							{processKey(key)}
-							{obj[key].map((path) => (
+							{pathGroups[key].map((path) => (
 								<button
 									key={`path-button-${path}`}
 									onClick={() => sidesHandler(path)}

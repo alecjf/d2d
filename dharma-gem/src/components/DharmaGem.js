@@ -8,11 +8,6 @@ const DharmaGem = () => {
 		[thePath, setThePath] = useState(undefined);
 
 	useEffect(() => {
-		const margins = 100 * 2,
-			baseDim = 480,
-			breakPoint = margins + baseDim;
-		window.screen.width < breakPoint &&
-			window.scrollTo((breakPoint - window.screen.width) / 2, 0);
 		fetch("https://fern.haus/projects/d2d/data.js")
 			.then((res) => res.text())
 			// eslint-disable-next-line no-eval
@@ -22,6 +17,11 @@ const DharmaGem = () => {
 				setJustPaths(json.justPaths);
 				setPaliWords(json.paliWords);
 				setThePath(json.thePath);
+				const margins = 100 * 2,
+					baseDim = 480,
+					breakPoint = margins + baseDim;
+				window.screen.width < breakPoint &&
+					window.scrollTo((breakPoint - window.screen.width) / 2, 0);
 			});
 	}, []);
 

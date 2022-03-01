@@ -131,7 +131,7 @@ function ListBox({ title, list, setList, dharmaLists, paliWords }) {
 			className={`list-box ${list === title ? "shown" : "hidden"}`}
 			id={`${title}${!list ? " lookup" : ""}`}
 		>
-			<div className="close-info" onClick={() => setList("TITLE")}>
+			<div className="close-info" onClick={() => setList("CLOSED")}>
 				X
 			</div>
 			{recursiveListing(dharmaLists[title], 0, title)}

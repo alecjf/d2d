@@ -1,5 +1,5 @@
 .list-box {
-  width: 100%;
+  max-width: 600px;
   background-color: var(--mid-accent);
   margin: 20px auto;
   padding: 5px;
@@ -14,6 +14,19 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.list-box table {
+  width: 100%;
+}
+
+.list-box table td {
+  width: 50%;
+  border: 1px solid black;
+}
+
+.list-box table td.info-def {
+  background-color: antiquewhite;
 }
 
 .list-box,

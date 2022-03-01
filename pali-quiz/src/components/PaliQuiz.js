@@ -1,6 +1,5 @@
 import "../css/pali-quiz.css";
 import { useEffect, useState } from "react";
-import { paliWords, getRandomPaliWords, shuffle } from "d2d-all-info";
 import { Transition } from "react-transition-group";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
@@ -24,7 +23,77 @@ const PaliQuiz = (props) => {
 			"total incorrect guesses": 0,
 			"avg incorrect guesses": 0,
 		}),
-		[newQuizToggle, setNewQuizToggle] = useState(undefined);
+		[newQuizToggle, setNewQuizToggle] = useState(undefined),
+		[paliWords, setPaliWords] = useState(undefined);
+
+	useEffect(() => {
+		fetch("https://fern.haus/projects/d2d/data.js")
+			.then((res) => res.text())
+			// eslint-disable-next-line no-eval
+			.then((res) => eval(res))
+			.then((json) => {
+				setPaliWords(json.paliWords);
+			});
+	}, []);
+
+	useEffect(() => {
+		let result = [...Object.keys(data), ...Object.values(data)];
+		shuffle(result);
+		setShuffledData(result);
+	}, [data]);
+
+	useEffect(() => {
+		let interval;
+		if (timerOn) {
+			interval = setInterval(
+				() =>
+					setTimerTime(Math.floor((Date.now() - timerStart) / 1000)),
+				100
+			);
+		}
+		// returning function for cleanup/unmounting
+		return () => clearInterval(interval);
+	}, [timerOn, timerStart]);
+
+	useEffect(() => {
+		function getRandomPaliWords(number, paliWords) {
+			const allPaliWords = Object.keys(paliWords);
+			shuffle(allPaliWords);
+			let result = {};
+			allPaliWords
+				.slice(0, number)
+				.forEach(
+					(paliWord) => (result[paliWord] = paliWords[paliWord])
+				);
+			return result;
+		}
+		paliWords &&
+			newQuizToggle &&
+			setTimeout(() => {
+				setData(
+					getRandomPaliWords(Math.floor(props.size / 2), paliWords)
+				);
+				setMatchedWords([]);
+				setIncorrectGuesses(0);
+				setNewQuizToggle(false);
+			}, 1000);
+	}, [newQuizToggle, paliWords, props.size]);
+
+	useEffect(() => {
+		if (checkCompleted()) {
+			setTimerOn(false);
+			updateScores();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [matchedWords]);
+
+	// Durstenfeld Shuffle:
+	function shuffle(array) {
+		for (let i = array.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[array[i], array[j]] = [array[j], array[i]];
+		}
+	}
 
 	function dataIsEmpty() {
 		return Object.keys(data).length === 0;
@@ -63,47 +132,6 @@ const PaliQuiz = (props) => {
 		);
 		setScores({ ...scores });
 	}
-
-	useEffect(() => {
-		let result = [...Object.keys(data), ...Object.values(data)];
-		shuffle(result);
-		setShuffledData(result);
-	}, [data]);
-
-	useEffect(() => {
-		let interval;
-		if (timerOn) {
-			interval = setInterval(
-				() =>
-					setTimerTime(Math.floor((Date.now() - timerStart) / 1000)),
-				100
-			);
-		}
-		// returning function for cleanup/unmounting
-		return () => clearInterval(interval);
-	}, [timerOn, timerStart]);
-
-	useEffect(
-		() =>
-			newQuizToggle &&
-			setTimeout(() => {
-				setData(
-					getRandomPaliWords(Math.floor(props.size / 2), paliWords)
-				);
-				setMatchedWords([]);
-				setIncorrectGuesses(0);
-				setNewQuizToggle(false);
-			}, 1000),
-		[newQuizToggle, props.size]
-	);
-
-	useEffect(() => {
-		if (checkCompleted()) {
-			setTimerOn(false);
-			updateScores();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [matchedWords]);
 
 	function createTransition(inProp, contentMaker, defaultShown) {
 		const duration = 1000,
@@ -219,7 +247,7 @@ const PaliQuiz = (props) => {
 		return !dataIsEmpty() && createTransition(timerOn, makeScores, true);
 	}
 
-	return (
+	return paliWords ? (
 		<div id="pali-quiz">
 			<header>
 				<a
@@ -283,6 +311,8 @@ const PaliQuiz = (props) => {
 				</a>
 			</footer>
 		</div>
+	) : (
+		<div id="error-message">{console.log("Fetching data...")}</div>
 	);
 };
 

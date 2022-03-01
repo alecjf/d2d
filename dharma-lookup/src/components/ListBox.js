@@ -1,43 +1,6 @@
-import "./list-box.css";
-import React, { useRef, useEffect } from "react";
-import dharmaLists, { paliWords } from "d2d-all-info";
+import "../css/list-box.css";
 
-function capitalize(str) {
-	const firstChar = str.charAt(0),
-		rest = str.substr(1);
-	return firstChar.toUpperCase() + rest;
-}
-
-const ListBox = ({ title, list, setList }) => {
-	const prevlistRef = useRef(),
-		fadeTime = 1250,
-		fadeOverlap = 500;
-
-	useEffect(() => {
-		if (list) {
-			const dom = document.getElementById(title),
-				hasPrevRef = prevlistRef.current !== "TITLE";
-			if (list === title) {
-				setTimeout(
-					() => {
-						dom.style.zIndex = 3;
-						dom.style.transform = "translateZ(100px)";
-						dom.className = "list-box shown";
-					},
-					hasPrevRef ? fadeTime - fadeOverlap : 0
-				);
-			} else if (prevlistRef.current === title) {
-				dom.className = "list-box hidden";
-				setTimeout(() => {
-					dom.style.zIndex = -3;
-					// same measurement as #scene.clicked
-					dom.style.transform = "translateZ(-1000px)";
-				}, fadeTime);
-			}
-			prevlistRef.current = list;
-		}
-	}, [list, title]);
-
+function ListBox({ title, list, dharmaLists, paliWords }) {
 	const WordPair = ({ left, right }) => {
 		return (
 			<div key={`pair-${left}`} className="pair">
@@ -164,29 +127,17 @@ const ListBox = ({ title, list, setList }) => {
 	}
 
 	return (
-		<div
-			className={`list-box${list ? " hidden" : ""}`}
-			id={`${title}${!list ? " lookup" : ""}`}
-			style={{
-				zIndex: -3,
-				transform: "translateZ(-1000px)",
-				// eslint-disable-next-line no-restricted-globals
-				maxWidth: (screen.width < 600 ? screen.width : 600) - 25,
-				left: `calc(50% - ${
-					// eslint-disable-next-line no-restricted-globals
-					((screen.width < 600 ? screen.width : 600) - 25) / 2
-				}px)`,
-			}}
-		>
-			{setList && (
-				<div className="close-info" onClick={() => setList("TITLE")}>
-					X
-				</div>
-			)}
+		<div className={`list-box`} id={`${title} lookup`}>
 			{recursiveListing(dharmaLists[title], 0, title)}
 		</div>
 	);
-};
+}
+
+function capitalize(str) {
+	const firstChar = str.charAt(0),
+		rest = str.substr(1);
+	return firstChar.toUpperCase() + rest;
+}
 
 export default ListBox;
 export { capitalize };

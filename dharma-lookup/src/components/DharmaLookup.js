@@ -1,11 +1,26 @@
 import "../css/dharma-lookup.css";
 import { useState, useEffect } from "react";
-import dharmaLists from "d2d-all-info";
-import ListBox, { capitalize } from "d2d-listbox-main";
+import ListBox, { capitalize } from "./ListBox";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
 const DharmaLookup = (props) => {
-	const [fromTop, setFromTop] = useState(0);
+	const [dharmaLists, setDharmaLists] = useState(undefined),
+		[justPaths, setJustPaths] = useState(undefined),
+		[paliWords, setPaliWords] = useState(undefined),
+		[fromTop, setFromTop] = useState(0);
+
+	useEffect(() => {
+		fetch("https://fern.haus/projects/d2d/data.js")
+			.then((res) => res.text())
+			// eslint-disable-next-line no-eval
+			.then((res) => eval(res))
+			.then((json) => {
+				setDharmaLists(json.dharmaLists);
+				setJustPaths(json.justPaths);
+				setPaliWords(json.paliWords);
+			});
+	}, []);
+
 	// set fromTop after rendering.
 	useEffect(() => setFromTop(window.innerHeight - 30), []);
 
@@ -33,7 +48,7 @@ const DharmaLookup = (props) => {
 		});
 	}
 
-	return (
+	return dharmaLists && justPaths && paliWords ? (
 		<div id="dharma-lookup">
 			<header>
 				<a
@@ -76,7 +91,11 @@ const DharmaLookup = (props) => {
 				))}
 			</select>
 			{Object.keys(dharmaLists).map((key) => (
-				<ListBox title={key} key={`lookup-list-box-${key}`} />
+				<ListBox
+					{...{ dharmaLists, paliWords }}
+					title={key}
+					key={`lookup-list-box-${key}`}
+				/>
 			))}
 			<footer>
 				<a
@@ -95,6 +114,8 @@ const DharmaLookup = (props) => {
 				</a>
 			</footer>
 		</div>
+	) : (
+		<div id="error-message">{console.log("Fetching data...")}</div>
 	);
 };
 

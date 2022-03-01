@@ -1,5 +1,5 @@
 .list-box {
-	width: 100%;
+	max-width: 600px;
 	background-color: var(--mid-accent);
 	margin: 20px auto;
 	padding: 5px;
@@ -8,6 +8,19 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+
+	table {
+		width: 100%;
+
+		td {
+			width: 50%;
+			border: 1px solid black;
+
+			&.info-def {
+				background-color: antiquewhite;
+			}
+		}
+	}
 
 	&,
 	.definition,

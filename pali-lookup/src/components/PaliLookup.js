@@ -1,74 +1,101 @@
 import "../css/pali-lookup.css";
 import { useEffect, useState } from "react";
-import { paliWords } from "d2d-all-info";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
 const PaliLookup = (props) => {
-	const sortedPali = Object.keys(paliWords).sort(),
-		sortedEng = Object.values(paliWords).sort();
+	const [paliWords, setPaliWords] = useState(undefined);
 
-	function getEngWordFromPali(pali) {
+	useEffect(() => {
+		fetch("https://fern.haus/projects/d2d/data.js")
+			.then((res) => res.text())
+			// eslint-disable-next-line no-eval
+			.then((res) => eval(res))
+			.then((json) => {
+				setPaliWords(json.paliWords);
+				const pali = Object.keys(json.paliWords).sort()[0],
+					eng = getEngWordFromPali(pali, json.paliWords).eng;
+				scrollHandler(eng, pali);
+			});
+	}, []);
+
+	function getEngWordFromPali(pali, paliWords) {
 		return { pali: pali, eng: paliWords[pali] };
 	}
 
-	function getPaliWordFromEng(eng) {
+	function getPaliWordFromEng(eng, paliWords) {
 		function getKeyByValue(object, value) {
 			return Object.keys(object).find((key) => object[key] === value);
 		}
 		return { pali: getKeyByValue(paliWords, eng), eng: eng };
 	}
 
-	const [wordPair, setWordPair] = useState(getEngWordFromPali(sortedPali[0]));
-
-	useEffect(() => {
-		//		scrollToSelected(wordPair.pali, wordPair.eng);
+	function scrollHandler(eng, pali) {
+		[pali, eng].forEach((w) =>
+			document.getElementById(w).classList.add("selected")
+		);
 		const paliElem = document.getElementById("pali-words"),
 			engElem = document.getElementById("eng-words"),
 			headerElemBottom = document
 				.getElementsByTagName("header")[0]
 				.getBoundingClientRect().bottom,
 			paliWordCoord =
-				document.getElementById(wordPair.pali).offsetTop -
-				headerElemBottom,
+				document.getElementById(pali).offsetTop - headerElemBottom,
 			engWordCoord =
-				document.getElementById(wordPair.eng).offsetTop -
+				document.getElementById(eng).offsetTop -
 				paliElem.getBoundingClientRect().bottom;
-		console.log(paliWordCoord, engWordCoord, headerElemBottom);
-		paliElem.scrollTo({ top: paliWordCoord, left: 0, behavior: "smooth" });
-		engElem.scrollTo({ top: engWordCoord, left: 0, behavior: "smooth" });
-	});
+		// console.log(paliWordCoord, engWordCoord, headerElemBottom);
+		paliElem.scrollTo({
+			top: paliWordCoord,
+			left: 0,
+			behavior: "smooth",
+		});
+		engElem.scrollTo({
+			top: engWordCoord,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
 
-	function makeWords(id, onChange, words) {
+	function makeWords(id, words) {
 		let result = [];
 		for (const word of words) {
 			result.push(
 				<div
 					key={`word-${word}`}
 					id={word}
-					onClick={() => setWordPair(onChange(word))}
-					className={
-						wordPair.pali === word || wordPair.eng === word
-							? "selected"
-							: "normal"
-					}
+					onClick={(e) => {
+						// clear previously selected
+						[
+							...document.getElementsByClassName("selected"),
+						].forEach((elem) => elem.classList.remove("selected"));
+
+						const word = e.target.innerText,
+							pali = paliWords[word]
+								? word
+								: getPaliWordFromEng(word, paliWords).pali,
+							eng = paliWords[word]
+								? getEngWordFromPali(word, paliWords).eng
+								: word;
+						scrollHandler(eng, pali);
+					}}
 				>
 					{word}
 				</div>
 			);
 		}
 		return (
-			<div id={id} className={"words"}>
+			<div id={id} className="words">
 				{result}
 			</div>
 		);
 	}
 
 	const makePaliWords = () =>
-			makeWords("pali-words", getEngWordFromPali, sortedPali),
+			makeWords("pali-words", Object.keys(paliWords).sort()),
 		makeEngWords = () =>
-			makeWords("eng-words", getPaliWordFromEng, sortedEng);
+			makeWords("eng-words", Object.values(paliWords).sort());
 
-	return (
+	return paliWords ? (
 		<div id="pali-lookup">
 			<header>
 				<a
@@ -99,6 +126,8 @@ const PaliLookup = (props) => {
 				{makeEngWords()}
 			</div>
 		</div>
+	) : (
+		<></>
 	);
 };
 

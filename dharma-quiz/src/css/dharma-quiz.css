@@ -158,9 +158,6 @@ footer #d2d-header p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -169,11 +166,12 @@ footer #d2d-header p {
 
 #dharma-quiz #item-boxes .item-box {
   width: 165px;
-  height: 70px;
-  margin: 5px;
+  min-height: 70px;
   border-radius: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 5px;
+  padding: 5px;
   z-index: 2;
 }
 

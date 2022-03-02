@@ -111,16 +111,17 @@ footer {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		align-items: center;
+		// align-items: center;
 		flex: 1;
 		overflow: auto;
 
 		.item-box {
 			width: 165px;
-			height: 70px;
-			margin: 5px;
-			border-radius: 10px;
+			min-height: 70px;
+            border-radius: 10px;
 			box-sizing: border-box;
+			margin: 5px;
+            padding: 5px;
 			z-index: 2;
 		}
 

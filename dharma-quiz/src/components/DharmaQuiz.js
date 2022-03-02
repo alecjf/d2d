@@ -20,12 +20,9 @@ const DharmaQuiz = ({ size }) => {
 			.then((res) => eval(res))
 			.then((json) => {
 				const { dharmaLists, paliWords } = json,
-					cw = getCategoryWords(dharmaLists, paliWords),
-					d = getRandomDharmaQuiz(size, cw);
+					cw = getCategoryWords(dharmaLists, paliWords);
 				setCategoryWords(cw);
-				setData(d);
-				setShuffledItems(shuffleItems(d));
-				setBoard(makeStartingBoard(d));
+				resetBoard(cw);
 			});
 	}, []);
 
@@ -44,6 +41,14 @@ const DharmaQuiz = ({ size }) => {
 			}
 		}
 	}, [board]);
+
+	function resetBoard(categoryWords) {
+		const data = getRandomDharmaQuiz(size, categoryWords);
+		setData(data);
+		setShuffledItems(shuffleItems(data));
+		setBoard(makeStartingBoard(data));
+		setSelectedItems({});
+	}
 
 	function getCategoryWords(dharmaLists, paliWords) {
 		function formatParts(parts) {
@@ -316,11 +321,7 @@ const DharmaQuiz = ({ size }) => {
 				}}
 				onEntered={() => setNewQuiz(false)}
 				onExit={() => {
-					const data = getRandomDharmaQuiz(size, categoryWords);
-					setData(data);
-					setShuffledItems(shuffleItems(data));
-					setBoard(makeStartingBoard(data));
-					setSelectedItems({});
+					resetBoard(categoryWords);
 					document.getElementById("dq")?.scrollTo(0, 0);
 				}}
 				timeout={duration}
@@ -357,7 +358,7 @@ const DharmaQuiz = ({ size }) => {
 								</h2>
 							</section>
 						</header>
-						<div id="header">
+						<div id="description">
 							Sort the terms by the following categories:
 							<br />
 							<h2>

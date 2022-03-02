@@ -1,3 +1,7 @@
+#dharma-quiz {
+  min-height: 100vh;
+}
+
 header,
 footer {
   text-align: center;
@@ -100,7 +104,7 @@ footer #d2d-header p {
   font-family: "Barlow Semi Condensed";
 }
 
-#dharma-quiz #header {
+#dharma-quiz #description {
   min-height: 35px;
   background-color: var(--mid-accent);
   font-weight: 100;
@@ -108,16 +112,16 @@ footer #d2d-header p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
 }
 
@@ -133,12 +137,16 @@ footer #d2d-header p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#dharma-quiz .item-box:hover {
+  cursor: pointer;
 }
 
 #dharma-quiz .selected-item {
@@ -146,6 +154,7 @@ footer #d2d-header p {
 }
 
 #dharma-quiz #item-boxes {
+  min-height: 200px;
   background-color: white;
   padding: 10px;
   -webkit-box-sizing: border-box;
@@ -153,14 +162,19 @@ footer #d2d-header p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   overflow: auto;
 }
 
@@ -231,6 +245,10 @@ footer #d2d-header p {
           justify-content: center;
 }
 
+#dharma-quiz #category-boxes .category-box h2:hover {
+  cursor: pointer;
+}
+
 #dharma-quiz #category-boxes .category-box .items-in-category {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -269,6 +287,10 @@ footer #d2d-header p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+#dharma-quiz #category-boxes .category-box .click-here-to-add:hover {
+  cursor: pointer;
 }
 
 #dharma-quiz #category-boxes .category-box .click-here-to-add span {

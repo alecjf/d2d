@@ -1,3 +1,7 @@
+#dharma-quiz {
+	min-height: 100vh;
+}
+
 header,
 footer {
 	text-align: center;
@@ -75,15 +79,15 @@ footer {
 		font-family: "Barlow Semi Condensed";
 	}
 
-	#header {
+	#description {
 		min-height: 35px;
 		background-color: var(--mid-accent);
 		font-weight: 100;
 		padding: 10px;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		flex-direction: column;
 		text-align: center;
 	}
 
@@ -96,8 +100,12 @@ footer {
 		text-align: center;
 		box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 		display: flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 
 	.selected-item {
@@ -105,23 +113,25 @@ footer {
 	}
 
 	#item-boxes {
+		min-height: 200px;
 		background-color: white;
 		padding: 10px;
 		box-sizing: border-box;
 		display: flex;
-		flex-wrap: wrap;
+		align-content: center;
+		align-items: center;
 		justify-content: center;
-		// align-items: center;
 		flex: 1;
+		flex-wrap: wrap;
 		overflow: auto;
 
 		.item-box {
 			width: 165px;
 			min-height: 70px;
-            border-radius: 10px;
+			border-radius: 10px;
 			box-sizing: border-box;
 			margin: 5px;
-            padding: 5px;
+			padding: 5px;
 			z-index: 2;
 		}
 
@@ -163,6 +173,10 @@ footer {
 				display: flex;
 				align-items: center;
 				justify-content: center;
+
+				&:hover {
+					cursor: pointer;
+				}
 			}
 
 			.items-in-category {
@@ -190,6 +204,10 @@ footer {
 				display: flex;
 				align-items: flex-end;
 				justify-content: center;
+
+				&:hover {
+					cursor: pointer;
+				}
 
 				span {
 					position: relative;

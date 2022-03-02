@@ -1,7 +1,3 @@
-#dharma-quiz {
-  min-height: 100vh;
-}
-
 header,
 footer {
   text-align: center;
@@ -88,7 +84,7 @@ footer #d2d-header p {
 }
 
 #dharma-quiz {
-  height: -webkit-fill-available;
+  min-height: 100vh;
   background-color: var(--mid-accent);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -154,7 +150,7 @@ footer #d2d-header p {
 }
 
 #dharma-quiz #item-boxes {
-  min-height: 200px;
+  min-height: 300px;
   background-color: white;
   padding: 10px;
   -webkit-box-sizing: border-box;
@@ -175,7 +171,6 @@ footer #d2d-header p {
           flex: 1;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  overflow: auto;
 }
 
 #dharma-quiz #item-boxes .item-box {
@@ -299,18 +294,8 @@ footer #d2d-header p {
 }
 
 @media only screen and (max-width: 850px) {
-  #dharma-quiz {
-    height: auto;
-  }
   #dharma-quiz #category-boxes {
     display: inline-block !important;
-  }
-  #dharma-quiz #item-boxes {
-    -webkit-box-flex: 0;
-        -ms-flex: 0;
-            flex: 0;
-    min-height: 300px;
-    max-height: 300px;
   }
 }
 /*# sourceMappingURL=dharma-quiz.css.map */

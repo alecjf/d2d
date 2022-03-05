@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ListBox, { capitalize } from "./ListBox";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
-const DharmaLookup = ({ dharmaLists, justPaths, paliWords }) => {
+const DharmaLookup = ({ dharmaLists, paliWords }) => {
 	const [fromTop, setFromTop] = useState(0);
 
 	// set fromTop after rendering.
@@ -31,7 +31,7 @@ const DharmaLookup = ({ dharmaLists, justPaths, paliWords }) => {
 		});
 	}
 
-	return dharmaLists && justPaths && paliWords ? (
+	return (
 		<div id="dharma-lookup">
 			<header>
 				<a
@@ -97,8 +97,6 @@ const DharmaLookup = ({ dharmaLists, justPaths, paliWords }) => {
 				</a>
 			</footer>
 		</div>
-	) : (
-		<div id="error-message">{console.log("Fetching data...")}</div>
 	);
 };
 

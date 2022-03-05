@@ -233,7 +233,7 @@ const PaliQuiz = ({ paliWords, size }) => {
 		return !dataIsEmpty() && createTransition(timerOn, makeScores, true);
 	}
 
-	return paliWords ? (
+	return (
 		<div id="pali-quiz">
 			<header>
 				<a
@@ -297,8 +297,6 @@ const PaliQuiz = ({ paliWords, size }) => {
 				</a>
 			</footer>
 		</div>
-	) : (
-		<div id="error-message">{console.log("Fetching data...")}</div>
 	);
 };
 

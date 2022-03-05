@@ -3,23 +3,8 @@ import { useState, useEffect } from "react";
 import ListBox, { capitalize } from "./ListBox";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
-const DharmaLookup = (props) => {
-	const [dharmaLists, setDharmaLists] = useState(undefined),
-		[justPaths, setJustPaths] = useState(undefined),
-		[paliWords, setPaliWords] = useState(undefined),
-		[fromTop, setFromTop] = useState(0);
-
-	useEffect(() => {
-		fetch("https://fern.haus/projects/d2d/data.js")
-			.then((res) => res.text())
-			// eslint-disable-next-line no-eval
-			.then((res) => eval(res))
-			.then((json) => {
-				setDharmaLists(json.dharmaLists);
-				setJustPaths(json.justPaths);
-				setPaliWords(json.paliWords);
-			});
-	}, []);
+const DharmaLookup = ({ dharmaLists, justPaths, paliWords }) => {
+	const [fromTop, setFromTop] = useState(0);
 
 	// set fromTop after rendering.
 	useEffect(() => setFromTop(window.innerHeight - 30), []);

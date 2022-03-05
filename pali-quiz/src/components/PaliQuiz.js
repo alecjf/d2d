@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Transition } from "react-transition-group";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
-const PaliQuiz = (props) => {
+const PaliQuiz = ({ paliWords, size }) => {
 	const [data, setData] = useState({}),
 		[suffledData, setShuffledData] = useState([]),
 		[selectedItem, setSelectedItem] = useState(undefined),
@@ -23,18 +23,7 @@ const PaliQuiz = (props) => {
 			"total incorrect guesses": 0,
 			"avg incorrect guesses": 0,
 		}),
-		[newQuizToggle, setNewQuizToggle] = useState(undefined),
-		[paliWords, setPaliWords] = useState(undefined);
-
-	useEffect(() => {
-		fetch("https://fern.haus/projects/d2d/data.js")
-			.then((res) => res.text())
-			// eslint-disable-next-line no-eval
-			.then((res) => eval(res))
-			.then((json) => {
-				setPaliWords(json.paliWords);
-			});
-	}, []);
+		[newQuizToggle, setNewQuizToggle] = useState(undefined);
 
 	useEffect(() => {
 		let result = [...Object.keys(data), ...Object.values(data)];
@@ -67,17 +56,14 @@ const PaliQuiz = (props) => {
 				);
 			return result;
 		}
-		paliWords &&
-			newQuizToggle &&
+		newQuizToggle &&
 			setTimeout(() => {
-				setData(
-					getRandomPaliWords(Math.floor(props.size / 2), paliWords)
-				);
+				setData(getRandomPaliWords(Math.floor(size / 2), paliWords));
 				setMatchedWords([]);
 				setIncorrectGuesses(0);
 				setNewQuizToggle(false);
 			}, 1000);
-	}, [newQuizToggle, paliWords, props.size]);
+	}, [newQuizToggle, paliWords, size]);
 
 	useEffect(() => {
 		if (checkCompleted()) {

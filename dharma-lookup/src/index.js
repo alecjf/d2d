@@ -6,7 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<DharmaLookup />
+		<DharmaLookup
+			{...{
+				// dharmaLists, justPaths, and paliWords in external js
+                // loaded in public/index.html <head> section:
+				// eslint-disable-next-line no-undef
+				dharmaLists,
+				// eslint-disable-next-line no-undef
+				justPaths,
+				// eslint-disable-next-line no-undef
+				paliWords,
+			}}
+		/>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

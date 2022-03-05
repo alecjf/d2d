@@ -6,7 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<PaliLookup />
+		<PaliLookup
+			{...{
+				// paliWords in external js loaded in
+				// public/index.html <head> section:
+				// eslint-disable-next-line no-undef
+				paliWords,
+			}}
+		/>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

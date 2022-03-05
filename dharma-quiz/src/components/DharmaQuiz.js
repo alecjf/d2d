@@ -4,7 +4,10 @@ import { Transition } from "react-transition-group";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
 const DharmaQuiz = ({ size }) => {
-	const [categoryWords, setCategoryWords] = useState(undefined),
+	// dharmaList and paliWords variables come from
+	// external js file loaded in public/index.html <head> section:
+	// eslint-disable-next-line no-undef
+	const categoryWords = getCategoryWords(dharmaLists, paliWords),
 		[data, setData] = useState(undefined),
 		[shuffledItems, setShuffledItems] = useState(undefined),
 		[board, setBoard] = useState(undefined),
@@ -13,18 +16,7 @@ const DharmaQuiz = ({ size }) => {
 		[showIncorrectStatus, setShowIncorrectStatus] = useState(false),
 		[newQuiz, setNewQuiz] = useState(false); // for Transition-ing in a new quiz
 
-	useEffect(() => {
-		fetch("https://fern.haus/projects/d2d/data.js")
-			.then((res) => res.text())
-			// eslint-disable-next-line no-eval
-			.then((res) => eval(res))
-			.then((json) => {
-				const { dharmaLists, paliWords } = json,
-					cw = getCategoryWords(dharmaLists, paliWords);
-				setCategoryWords(cw);
-				resetBoard(cw);
-			});
-	}, []);
+	useEffect(() => resetBoard(categoryWords), []);
 
 	useEffect(() => {
 		if (board) {

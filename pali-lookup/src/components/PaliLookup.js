@@ -1,22 +1,19 @@
 import "../css/pali-lookup.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import fhLogo from "../images/fern-haus-site-logo.png";
 
-const PaliLookup = (props) => {
-	const [paliWords, setPaliWords] = useState(undefined);
+const PaliLookup = ({ paliWords }) => {
+	const sortedPali = Object.keys(paliWords).sort(),
+		sortedEng = Object.values(paliWords).sort();
 
-	useEffect(() => {
-		fetch("https://fern.haus/projects/d2d/data.js")
-			.then((res) => res.text())
-			// eslint-disable-next-line no-eval
-			.then((res) => eval(res))
-			.then((json) => {
-				setPaliWords(json.paliWords);
-				const pali = Object.keys(json.paliWords).sort()[0],
-					eng = getEngWordFromPali(pali, json.paliWords).eng;
-				scrollHandler(eng, pali);
-			});
-	}, []);
+	useEffect(
+		() =>
+			scrollHandler(
+				getEngWordFromPali(sortedPali[0], paliWords).eng,
+				sortedPali[0]
+			),
+		[]
+	);
 
 	function getEngWordFromPali(pali, paliWords) {
 		return { pali: pali, eng: paliWords[pali] };
@@ -90,12 +87,10 @@ const PaliLookup = (props) => {
 		);
 	}
 
-	const makePaliWords = () =>
-			makeWords("pali-words", Object.keys(paliWords).sort()),
-		makeEngWords = () =>
-			makeWords("eng-words", Object.values(paliWords).sort());
+	const makePaliWords = () => makeWords("pali-words", sortedPali),
+		makeEngWords = () => makeWords("eng-words", sortedEng);
 
-	return paliWords ? (
+	return (
 		<div id="pali-lookup">
 			<header>
 				<a
@@ -126,8 +121,6 @@ const PaliLookup = (props) => {
 				{makeEngWords()}
 			</div>
 		</div>
-	) : (
-		<></>
 	);
 };
 

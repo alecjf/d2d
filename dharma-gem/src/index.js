@@ -6,7 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<DharmaGem />
+		<DharmaGem
+			{...{
+				// dharmaLists, justPaths, paliWords, and thePath
+				// in external js loaded in public/index.html <head> section:
+				// eslint-disable-next-line no-undef
+				dharmaLists,
+				// eslint-disable-next-line no-undef
+				justPaths,
+				// eslint-disable-next-line no-undef
+				paliWords,
+				// eslint-disable-next-line no-undef
+				thePath,
+			}}
+		/>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
